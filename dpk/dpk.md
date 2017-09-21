@@ -6,20 +6,20 @@
 
 # Deployment Packages
 
-* Delivered automation for building environments
-* Define your environments upfront
-* Implementation is abstracted
-* Consistent and repeatable infrastructure
-* Configuration is documented: `psft_customizations.yaml`
-* Extend to customize your builds
+1. Delivered automation for building environments
+1. Define your environments upfront
+1. Implementation is abstracted
+1. Consistent and repeatable infrastructure
+1. Configuration is documented: `psft_customizations.yaml`
+1. Extend to customize your builds
 
 !SLIDE bullets
 
 # Custom DPK Roles
 
-* Include your configuration in DPK builds
-* Extend psft_customizations.yaml
-* Deploy your own changes to environments
-* Signon page
-* SSL Certificates
-* Custom Java Libraries
+1. Include your configuration in DPK builds
+1. Extend psft_customizations.yaml
+1. Deploy your own changes to environments
+1. Signon page
+1. SSL Certificates
+1. Custom Java Libraries
