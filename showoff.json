@@ -1,5 +1,5 @@
 {
-  "name": "PS Admin Wiki",
+  "name": "Advanced PeopleSoft Administration",
   "protected": [
     "presenter",
     "onepage",
@@ -12,6 +12,9 @@
     "intro/intro.md",
     "intro/about.md",
     "intro/agenda.md",
-    "dpk/dpk.md"
+    "dpk/dpk.md",
+    "custom_modules/custom.md",
+    "scripting/scripting.md",
+    "git/git.md"
   ]
 }
