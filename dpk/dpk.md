@@ -1,6 +1,6 @@
-!SLIDE center subsection black
+!SLIDE center subsection blue
 
-# How to Contribute
+# Deployment Packages
 
 !SLIDE bullets
 
