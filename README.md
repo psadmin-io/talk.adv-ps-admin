@@ -1,6 +1,6 @@
-# PS Admin Wiki Presentation
+# Advanced PeopleSoft Administration using the PeopleSoft Cloud Architecture
 
-To view the presentation, visit [http://wiki.psadmin.io/psadmin-wiki-showoff/](http://wiki.psadmin.io/psadmin-wiki-showoff/)
+## Oracle OpenWorld 2017
 
 To download and view the presentation locally:
 
