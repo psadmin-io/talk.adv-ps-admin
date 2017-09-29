@@ -1,5 +1,5 @@
 {
-  "name": "PS Admin Wiki",
+  "name": "Advanced PeopleSoft Administration",
   "protected": [
     "presenter",
     "onepage",
@@ -10,9 +10,11 @@
   "highlight": "railscasts",
   "sections": [
     "intro/intro.md",
-    "clone/clone.md",
-    "add/add.md",
-    "test/test.md",
-    "push/push.md"
+    "intro/about.md",
+    "intro/agenda.md",
+    "dpk/dpk.md",
+    "custom_modules/custom.md",
+    "scripting/scripting.md",
+    "git/git.md"
   ]
 }
