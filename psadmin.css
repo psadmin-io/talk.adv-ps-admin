@@ -107,9 +107,14 @@ code {
   border-bottom: 0px solid #222;
 }
 
-.psadminlogo {
+img.psadminlogo {
   padding-top: 5%;
   padding-bottom: 10%;
+}
+
+img.podcastlogo {
+  padding-top: 15%;
+  padding-bottom: 15%;
 }
 
 .subsection a {
