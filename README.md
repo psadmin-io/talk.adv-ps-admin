@@ -1,6 +1,7 @@
-# Advanced PeopleSoft Administration
+# Advanced PeopleSoft Administration using the PeopleSoft Cloud Architecture
 
-Slides for the "Advanced PeopleSoft Administration" talk from psadmin.io. Each conference talk has been adapted for the audience. View the branches to find the various versions of this talk. Each conference will have a separate branch.
+## Oracle OpenWorld 2017
+### Session SUN1607
 
 To download and view the presentation locally:
 
