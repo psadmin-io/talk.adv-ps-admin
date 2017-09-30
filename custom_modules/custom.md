@@ -2,7 +2,11 @@
 
 # Custom DPK Modules
 
+<<<<<<< HEAD
 !SLIDE bullets incremental transition=fade
+=======
+!SLIDE bullets
+>>>>>>> 4beb5872b2fe2830779c5a6c82c3a2061c0a2d55
 
 # Custom DPK Modules
 
@@ -10,7 +14,10 @@
 1. Make it your system, not a Demo environment
 1. Open Source (github.com/psadmin-io)
 1. Windows and Linux support
+<<<<<<< HEAD
 1. Started by Eric Bollinger (CU)
+=======
+>>>>>>> 4beb5872b2fe2830779c5a6c82c3a2061c0a2d55
 
 !SLIDE bullets
 
@@ -35,17 +42,24 @@ Website Configuration
 1. `text.properties`
 1. Custom Signon
 
+<<<<<<< HEAD
 !SLIDE bullets incremental transition=fade
+=======
+!SLIDE bullets
+>>>>>>> 4beb5872b2fe2830779c5a6c82c3a2061c0a2d55
 
 # Install Modules
 
 1. `git clone https://github.com/psadmin-io/psadminio-io_portalwar`
 1. `puppet module install psadminio_io_weblogic` (future)
+<<<<<<< HEAD
 1. Enable Data Bindings
 
         @@@ yaml
         puppet.conf
         # data_binding_terminus=none
+=======
+>>>>>>> 4beb5872b2fe2830779c5a6c82c3a2061c0a2d55
 
 !SLIDE bullets
 
