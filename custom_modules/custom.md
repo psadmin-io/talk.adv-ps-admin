@@ -2,7 +2,11 @@
 
 # Custom DPK Modules
 
+<<<<<<< HEAD
+!SLIDE bullets incremental transition=fade
+=======
 !SLIDE bullets
+>>>>>>> 4beb5872b2fe2830779c5a6c82c3a2061c0a2d55
 
 # Custom DPK Modules
 
@@ -10,6 +14,10 @@
 1. Make it your system, not a Demo environment
 1. Open Source (github.com/psadmin-io)
 1. Windows and Linux support
+<<<<<<< HEAD
+1. Started by Eric Bollinger (CU)
+=======
+>>>>>>> 4beb5872b2fe2830779c5a6c82c3a2061c0a2d55
 
 !SLIDE bullets
 
@@ -34,12 +42,24 @@ Website Configuration
 1. `text.properties`
 1. Custom Signon
 
+<<<<<<< HEAD
+!SLIDE bullets incremental transition=fade
+=======
 !SLIDE bullets
+>>>>>>> 4beb5872b2fe2830779c5a6c82c3a2061c0a2d55
 
 # Install Modules
 
 1. `git clone https://github.com/psadmin-io/psadminio-io_portalwar`
 1. `puppet module install psadminio_io_weblogic` (future)
+<<<<<<< HEAD
+1. Enable Data Bindings
+
+        @@@ yaml
+        puppet.conf
+        # data_binding_terminus=none
+=======
+>>>>>>> 4beb5872b2fe2830779c5a6c82c3a2061c0a2d55
 
 !SLIDE bullets
 
@@ -83,3 +103,42 @@ Website Configuration
 
     @@@ yaml
     io_weblogic::install_jce: true
+
+!SLIDE center subsection blue
+
+# Demo
+
+~~~SECTION:notes~~~
+
+Show off current state:
+
+1. Show WL default page at root of web server
+1. Open `text.properties`
+1. Open `webLogic.xml` (cookie name)
+
+Clone and update `psft_customizations.yaml`
+
+1. `cd C:\psft\dpk\puppet\production\modules`
+1. `git clone https://github.com/psadmin-io/psadminio-io_portalwar.git io_portalwar`
+1. `puppet module install puppetlabs-inifile --confdir=c:\psft\dpk\puppet`
+1. Enable Data Bindings
+1. Update `psft_customizations.yaml`
+ 
+        @@@ yaml
+        # ############
+        # io_portalwar
+        # ############
+
+        io_portalwar::text_properties:
+        "%{hiera('pia_domain_name')}":
+            '138':  'Signon to the OOW Demo Environment'
+            '8998': 'Hello OOW17'
+
+        io_portalwar::pia_cookie_name: "%{hiera('db_name')}-PORTAL-PSJSESSIONID"
+
+        io_portalwar::index_redirect: true
+        io_portalwar::redirect_target: "./%{hiera('pia_site_name')}/signon.html"
+
+1. Run `puppet apply --confdir=c:\psft\dpk\puppet -d -e "contain ::io_portalwar"`
+
+~~~ENDSECTION~~~
