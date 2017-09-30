@@ -112,6 +112,11 @@ code {
   padding-bottom: 10%;
 }
 
+img.podcastlogo {
+  padding-top: 15%;
+  padding-bottom: 15%;
+}
+
 .subsection a {
   color: white;
 }
