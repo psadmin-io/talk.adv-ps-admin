@@ -5,7 +5,7 @@
     "onepage",
     "print"
   ],
-  "user": "dan",
+  "user": "admin",
   "password": "password",
   "highlight": "railscasts",
   "sections": [
@@ -15,6 +15,7 @@
     "dpk/dpk.md",
     "custom_modules/custom.md",
     "scripting/scripting.md",
-    "git/git.md"
+    "git/git.md",
+    "closing/closing.md"
   ]
 }
