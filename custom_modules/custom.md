@@ -7,10 +7,10 @@
 # Custom DPK Modules
 
 1. Fill in DPK gaps
+1. Started by Eric Bollinger (CU)
 1. Make it your system, not a Demo environment
 1. Open Source (github.com/psadmin-io)
 1. Windows and Linux support
-1. Started by Eric Bollinger (CU)
 
 !SLIDE bullets
 

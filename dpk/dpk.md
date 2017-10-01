@@ -2,7 +2,7 @@
 
 # Deployment Packages
 
-!SLIDE bullets
+!SLIDE bullets incremental transition=fade
 
 # Deployment Packages
 
@@ -13,7 +13,7 @@
 1. Configuration is documented: `psft_customizations.yaml`
 1. Extend to customize your builds
 
-!SLIDE bullets
+!SLIDE bullets incremental transition=fade
 
 # DPK Tools
 
@@ -23,7 +23,7 @@
 1. Facter
 1. Ruby, Python
 
-!SLIDE bullets
+!SLIDE bullets incremental transition=fade
 
 # Custom DPK Roles
 

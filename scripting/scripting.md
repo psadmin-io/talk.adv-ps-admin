@@ -2,7 +2,7 @@
 
 # Approches to DPKs
 
-!SLIDE bullets
+!SLIDE bullets incremental transition=fade
 
 # Approches
 
@@ -11,7 +11,7 @@
 1. DPK and Custom modules
 1. Customized DPK
 
-!SLIDE bullets
+!SLIDE bullets incremental transition=fade
 
 # Managing Custom DPK
 
@@ -20,7 +20,7 @@
 1. Manual git repo
 1. Puppet server
 
-!SLIDE bullets
+!SLIDE bullets incremental transition=fade
 
 # Makefile for dpkfiles
 
@@ -33,12 +33,13 @@
 
 # Makefile for dpkfiles
 
-$PUPPET_CONFIG_DIR/
-    data/
-        psft_customization.yaml -> $DPKFILES_DIR/data/prd_portal.psft_customization.yaml
-    manifests/
-        site.pp -> $DPKFILES_DIR/manifests/prd_portal.site.pp
-    modules/
-        io_roles -> $DPKFILES_DIR/modules/io_roles
-        io_profiles -> $DPKFILES_DIR/modules/io_profiles
-        io_config -> $DPKFILES_DIR/modules/io_config
+    @@@ make
+    $PUPPET_CONFIG_DIR/
+        data/
+            psft_customization.yaml -> $DPKFILES_DIR/data/prd_portal.psft_customization.yaml
+        manifests/
+            site.pp -> $DPKFILES_DIR/manifests/prd_portal.site.pp
+        modules/
+            io_roles -> $DPKFILES_DIR/modules/io_roles
+            io_profiles -> $DPKFILES_DIR/modules/io_profiles
+            io_config -> $DPKFILES_DIR/modules/io_config
