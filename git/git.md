@@ -2,6 +2,12 @@
 
 # Git and the DPK
 
+~~~SECTION:notes~~~
+
+Ask audience: "who uses Git?"
+
+~~~ENDSECTION~~~
+
 !SLIDE bullets incremental
 
 # Git
