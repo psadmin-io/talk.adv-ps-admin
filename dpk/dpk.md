@@ -15,6 +15,16 @@
 
 !SLIDE bullets
 
+# DPK Tools
+
+1. Puppet
+1. YAML
+1. Heira
+1. Facter
+1. Ruby, Python
+
+!SLIDE bullets
+
 # Custom DPK Roles
 
 1. Include your configuration in DPK builds
