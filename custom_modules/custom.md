@@ -82,6 +82,7 @@ Clone and update `psft_customizations.yaml`
         io_portalwar::redirect_target: "./%{hiera('pia_site_name')}/signon.html"
 
 1. Run `puppet apply --confdir=c:\psft\dpk\puppet -d -e "contain ::io_portalwar"`
+1. `get-service -name *PIA* | restart-service`
 
 ~~~ENDSECTION~~~
 
