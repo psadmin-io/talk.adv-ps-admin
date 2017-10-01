@@ -11,7 +11,7 @@
 
 # Kyle Benson
 
-1. PeopleSoft for 10 years
+1. 10 Years PeopleSoft Experience
 1. Developer > Sys Admin > Jr. DBA > DevOps Dude > ?
 
 !SLIDE bullets
@@ -31,8 +31,8 @@
 
 # Dan Iverson
 
-1. PeopleSoft 14 Years
-1. Developer, PeopleSoft Admin, Team Leader, Project Manager
+1. 14 Years PeopleSoft Experience
+1. Developer, PeopleSoft Admin, Team Leader, Project Manager, AR Functional
 1. Independent Consultant
 1. Serve in the National Guard (16 years)
 

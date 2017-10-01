@@ -11,7 +11,7 @@
 1. Implementation is abstracted
 1. Consistent and repeatable infrastructure
 1. Configuration is documented: `psft_customizations.yaml`
-1. Extend to customize your builds
+1. Extend the DPK to customize your builds
 
 !SLIDE bullets incremental transition=fade
 
@@ -25,11 +25,11 @@
 
 !SLIDE bullets incremental transition=fade
 
-# Custom DPK Roles
+# Extend the DPK
 
 1. Include your configuration in DPK builds
 1. Extend psft_customizations.yaml
-1. Deploy your own changes to environments
+1. Deploy your own changes with Puppet
 1. Signon page
 1. SSL Certificates
 1. Custom Java Libraries
