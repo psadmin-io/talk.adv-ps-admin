@@ -2,13 +2,12 @@
 
 # Introductions
 
-
 1. Kyle Benson
 1. Dan Iverson
 
 ![.podcastlogo Podcast Logo](/_images/podcast.png)
 
-!SLIDE bullets
+!SLIDE bullets incremental
 
 # Kyle Benson
 
@@ -26,9 +25,16 @@
 1. FSCM, HCM, ELM, Interaction Hub
 1. 9.2 and 8.54 (8.55 this weekend)
 
-!SLIDE bullets
+![.smallright](/_images/hc.tif)
+
+!SLIDE bullets incremental
 
 # Dan Iverson
+
+1. PeopleSoft 14 Years
+1. Developer, PeopleSoft Admin, Team Leader, Project Manager
+1. Independent Consultant
+1. Serve in the National Guard (16 years)
 
 !SLIDE bullets
 
@@ -39,4 +45,4 @@
 1. FS Image 23, HR Image 23 (Oct), ELM Image 13
 1. PeopleTools 8.55.17
 
-![.smallright](../_images/cityofmpls.png)
+![.smallright](/_images/cityofmpls.png)
