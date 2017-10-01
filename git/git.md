@@ -29,7 +29,7 @@
 
 !SLIDE bullets incremental
 
-# Collaborate 
+# Collaborate
 
 1. Share code on GitHub
 1. `ps-project-git` - App Designer projects and Git
