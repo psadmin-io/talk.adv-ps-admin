@@ -33,7 +33,7 @@
 
 1. Share code on GitHub
 1. `ps-project-git` - App Designer projects and Git
-1. (Idea) Support more Export to File options
+1. (Idea 12562) Support more Export to File options
 1. This presetation is managed by Git and on GitHub :)
 
 !SLIDE bullets
@@ -44,4 +44,4 @@
 1. GIT-POSH
 1. https://git-scm.com
 1. Pro-Git (online book)
-1. GitLab (hosted or local)
+1. GitLab (cloud or local)
