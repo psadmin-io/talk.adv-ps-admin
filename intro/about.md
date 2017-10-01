@@ -6,7 +6,7 @@
 1. Kyle Benson
 1. Dan Iverson
 
-![.podcastlogo Podcast Logo](../_images/podcast.png)
+![.podcastlogo Podcast Logo](/_images/podcast.png)
 
 !SLIDE bullets
 

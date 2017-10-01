@@ -7,7 +7,6 @@
     font-style: normal;
 }
 
-
 body {
   background-color: white;
 }
@@ -107,12 +106,12 @@ code {
   border-bottom: 0px solid #222;
 }
 
-img.psadminlogo {
+.psadminlogo::after {
   padding-top: 5%;
   padding-bottom: 10%;
 }
 
-img.podcastlogo {
+.podcastlogo::after {
   padding-top: 15%;
   padding-bottom: 15%;
 }
