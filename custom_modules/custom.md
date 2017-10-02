@@ -84,7 +84,6 @@ Clone and update `psft_customizations.yaml`
 1. Run `puppet apply --confdir=c:\psft\dpk\puppet -d -e "contain ::io_portalwar"`
 1. `get-service -name *PIA* | restart-service`
 
-
 ~~~ENDSECTION~~~
 
 !SLIDE bullets
