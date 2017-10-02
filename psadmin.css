@@ -1,5 +1,13 @@
-@import url('https://fonts.googleapis.com/css?family=Inconsolata|Lato|Roboto');
-
+@font-face {
+  font-family: 'Inconsolata';
+  src: url('_images/Inconsolata/Inconsolata-Bold.ttf') format('truetype');
+  font-weight: bold;
+  font-style: bold;
+}
+@font-face {
+  font-family: 'Lato';
+  src: url('_images/Lato/Lato-Regular.ttf') format('truetype');
+}
 @font-face {
     font-family: 'Interstate';
     src: url('_images/interstate-black.ttf') format('truetype');
