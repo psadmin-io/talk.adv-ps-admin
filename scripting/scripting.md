@@ -1,10 +1,10 @@
 !SLIDE center subsection blue
 
-# Approches to DPKs
+# Approaches to DPKs
 
 !SLIDE bullets incremental transition=fade
 
-# Approches
+# Approaches
 
 1. DPK tools, Manual domain
 1. DPK tools and domains, Manual config
