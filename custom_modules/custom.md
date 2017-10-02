@@ -73,9 +73,8 @@ Clone and update `psft_customizations.yaml`
         # ############
 
         io_portalwar::text_properties:
-        "%{hiera('pia_domain_name')}":
-            '138':  'Signon to the OOW Demo Environment'
-            '8998': 'Hello OOW17'
+          "%{hiera('pia_domain_name')}":
+            '138':  'Hello OOW17'
 
         io_portalwar::pia_cookie_name: "%{hiera('db_name')}-PORTAL-PSJSESSIONID"
 
@@ -83,6 +82,8 @@ Clone and update `psft_customizations.yaml`
         io_portalwar::redirect_target: "./%{hiera('pia_site_name')}/signon.html"
 
 1. Run `puppet apply --confdir=c:\psft\dpk\puppet -d -e "contain ::io_portalwar"`
+1. `get-service -name *PIA* | restart-service`
+
 
 ~~~ENDSECTION~~~
 
@@ -108,7 +109,7 @@ Clone and update `psft_customizations.yaml`
 
     @@@ yaml
     io_portalwar::text_properties:
-    "%{hiera('pia_domain_name')}":
+      "%{hiera('pia_domain_name')}":
         '138':  'Hello OOW17'
 
 !SLIDE bullets
