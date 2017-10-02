@@ -1,0 +1,895 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <title>Advanced PeopleSoft Administration</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0"/>
+
+  
+
+  <link rel="stylesheet" type="text/css" href=".//css/highlight/railscasts.css"  />
+  <link rel="stylesheet" type="text/css" href=".//css/mermaid-6.0.0.css" />
+  <link rel="stylesheet" type="text/css" href=".//css/font-awesome-4.4.0/css/font-awesome.min.css">
+  <link rel="stylesheet" type="text/css" href=".//css/introjs-2.5.local.css">
+  <link rel="stylesheet" type="text/css" href=".//css/jquery-ui-1.12.1.css">
+  <link rel="stylesheet" type="text/css" href=".//css/showoff.css?v=0.19.2" />
+  <link rel="stylesheet" type="text/css" href=".//css/zoomline-0.0.1.css">
+
+  <script type="text/javascript" src=".//js/jquery-2.1.4.min.js"></script>
+  <script type="text/javascript" src=".//js/jquery-ui-1.12.1.js"></script>
+
+  <script type="text/javascript" src=".//js/jquery.cycle.all-2.8.0.js"></script>
+  <script type="text/javascript" src=".//js/jquery.batchImageLoad-1.0.0.js"></script>
+  <script type="text/javascript" src=".//js/jquery.parsequery.min-6a20f83.js"></script>
+  <script type="text/javascript" src=".//js/jquery.doubletap-4ff02c5.js"></script>
+  <script type="text/javascript" src=".//js/highlight.pack-9.2.0.js"></script>
+  <script type="text/javascript" src=".//js/jTypeWriter-1.1.js"></script>
+  <script type="text/javascript" src=".//js/bigtext-0.1.8.js"></script>
+  <script type="text/javascript" src=".//js/zoomline-0.0.1.js"></script>
+  <script type="text/javascript" src=".//js/simpleStrings-0.0.1.js"></script>
+  <script type="text/javascript" src=".//js/mermaid-6.0.0-min.js"></script>
+
+  <!-- waiting on https://github.com/usablica/intro.js/pull/727 -->
+  <script type="text/javascript" src=".//js/intro-2.5.local.js"></script>
+
+  <script type="text/javascript" src=".//js/coffee-script-1.1.3-pre.js"></script>
+
+  <script type="text/javascript" src=".//js/annotations.js?v=0.19.2"></script>
+  <script type="text/javascript" src=".//js/showoff.js?v=0.19.2"></script>
+
+  
+    <link rel="stylesheet" href=".//file/psadmin.css" type="text/css"/>
+  
+
+  
+
+  <script type="text/javascript">
+    $(function(){
+      setupPreso(false, './');
+    });
+
+    editUrl     = "";
+    interactive = false;
+    master      = false;
+
+    keymap               = {
+  "space": "NEXT",
+  "d": "DEBUG",
+  "up": "PREV",
+  "left": "PREV",
+  "pageup": "PREV",
+  "down": "NEXT",
+  "right": "NEXT",
+  "pagedown": "NEXT",
+  "R": "RELOAD",
+  "r": "REFRESH",
+  "c": "CONTENTS",
+  "t": "CONTENTS",
+  "h": "HELP",
+  "/": "HELP",
+  "?": "HELP",
+  "b": "BLANK",
+  ".": "BLANK",
+  "F": "FOOTER",
+  "f": "FOLLOW",
+  "n": "NOTES",
+  "esc": "CLEAR",
+  "p": "PAUSE",
+  "P": "PRESHOW",
+  "x": "EXECUTE",
+  "f5": "EXECUTE"
+};
+    keycode_dictionary   = {
+  "0": "\\",
+  "8": "backspace",
+  "9": "tab",
+  "12": "num",
+  "13": "enter",
+  "16": "shift",
+  "17": "ctrl",
+  "18": "alt",
+  "19": "pause",
+  "20": "caps",
+  "27": "esc",
+  "32": "space",
+  "33": "pageup",
+  "34": "pagedown",
+  "35": "end",
+  "36": "home",
+  "37": "left",
+  "38": "up",
+  "39": "right",
+  "40": "down",
+  "44": "print",
+  "45": "insert",
+  "46": "delete",
+  "48": "0",
+  "49": "1",
+  "50": "2",
+  "51": "3",
+  "52": "4",
+  "53": "5",
+  "54": "6",
+  "55": "7",
+  "56": "8",
+  "57": "9",
+  "59": ";",
+  "61": "=",
+  "65": "a",
+  "66": "b",
+  "67": "c",
+  "68": "d",
+  "69": "e",
+  "70": "f",
+  "71": "g",
+  "72": "h",
+  "73": "i",
+  "74": "j",
+  "75": "k",
+  "76": "l",
+  "77": "m",
+  "78": "n",
+  "79": "o",
+  "80": "p",
+  "81": "q",
+  "82": "r",
+  "83": "s",
+  "84": "t",
+  "85": "u",
+  "86": "v",
+  "87": "w",
+  "88": "x",
+  "89": "y",
+  "90": "z",
+  "91": "cmd",
+  "92": "cmd",
+  "93": "cmd",
+  "96": "num_0",
+  "97": "num_1",
+  "98": "num_2",
+  "99": "num_3",
+  "100": "num_4",
+  "101": "num_5",
+  "102": "num_6",
+  "103": "num_7",
+  "104": "num_8",
+  "105": "num_9",
+  "106": "num_multiply",
+  "107": "num_add",
+  "108": "num_enter",
+  "109": "num_subtract",
+  "110": "num_decimal",
+  "111": "num_divide",
+  "112": "f1",
+  "113": "f2",
+  "114": "f3",
+  "115": "f4",
+  "116": "f5",
+  "117": "f6",
+  "118": "f7",
+  "119": "f8",
+  "120": "f9",
+  "121": "f10",
+  "122": "f11",
+  "123": "f12",
+  "124": "print",
+  "144": "num",
+  "145": "scroll",
+  "173": "-",
+  "186": ";",
+  "187": "=",
+  "188": ",",
+  "189": "-",
+  "190": ".",
+  "191": "/",
+  "192": "`",
+  "219": "[",
+  "220": "\\",
+  "221": "]",
+  "222": "'",
+  "223": "`",
+  "224": "cmd",
+  "225": "alt",
+  "57392": "ctrl",
+  "63289": "num"
+};
+    keycode_shifted_keys = {
+  "0": ")",
+  "1": "!",
+  "2": "@",
+  "3": "#",
+  "4": "$",
+  "5": "%",
+  "6": "^",
+  "7": "&",
+  "8": "*",
+  "9": "(",
+  "/": "?",
+  ".": ">",
+  ",": "<",
+  "'": "\"",
+  ";": ":",
+  "[": "{",
+  "]": "}",
+  "\\": "|",
+  "`": "~",
+  "=": "+",
+  "-": "_"
+};
+    user_translations    = {
+};
+
+    I18n = new translation({"name":"Showoff Presentation","menu":{"title":"Showoff Menu","table_of_contents":"Table of Contents","downloads":"Downloads","feedback":{"label":"Send Feedback","description":"This slide is...","worst":"Terrible","best":"Awesome","why":"Why...?","send":"Send"},"pace":{"label":"The presenter should...","slower":"Slow Down","faster":"Speed Up"},"question":{"label":"Ask a Question","placeholder":"Ask a question..."},"edit":"Edit Current Slide","clear_annotations":"Clear Annotations","language":"Content Language","close":"Close","help":"Press <code>?</code> for help.","anonymous":"All features are anonymous.","sending":"Sending..."},"navigation":{"next":"Next","previous":"Previous","sync":"Sync Presentation"},"loading":"loading presentation...","activity_complete":"Activity complete","follow":{"label":"Follow Mode:"},"refresh":"Are you sure you want to refresh the slide content?\n\n(Use `RELOAD` to fully reload the entire UI)","reload":"Are you sure you want to reload Showoff?","preshow":{"prompt":"Minutes from now to start?","resume":"Resuming in:"},"tour":{"show":"See the Tour","reset":"Reset Hints","welcome":"<h3>Welcome to Showoff</h3>Let me show you around. After you finish this tour, it won't show again.","displayview":"Start by clicking this button to open the Display Window; then drag it onto the projector.","annotations":"Draw on your slides everywhere the presentation is displayed.","timer":"Set a countdown timer to help you stay on pace.","pace":"Audience members can use this to tell you if you're moving too quickly. Try to keep the indicator centered.","questions":"Questions asked by audience members are displayed here. You'll also see a count indicator on the Display Window when you have questions to answer.","notes":"Configure the notes display by zooming text, resizing the pane, or even popping it out into a new window.","slidesource":"The name of the slide is displayed here.","settings":"Would you like a different presenter layout? Choose that and other settings here.","edit":"This button will open your web-based editor--usually something like GitHub.","report":"Don't forget to report issues when you see them.","activity":{"count":"This will count down as audience members mark their activity complete. Their presentations will pause until completed.","complete":"Check this box when you're ready to move on. The presentation will pause while you're working."},"form":{"responses":"As questions are answered, they'll show up as a bar chart with the number of answers to each question on the right.","display":"Press this button to present a snapshot of the live responses on slide.","save":"Press this button to save your responses. The presentation will pause while answering."},"menu":{"start":"Click here to open the menu.","navigation":"Quickly navigate to any slide.","download":"Download presentation support files.","pace":"Provide pace feedback.","questions":"Ask live questions of the presenter.","feedback":"Provide suggestions for improving the content."}},"downloads":{"title":"File Downloads"},"help":{"title":"Help","next":"Move to the next slide.","prev":"Move to the previous slide.","contents":"Show the table of contents menu.","follow":"Toggle follow mode.","help":"Show this help dialog.","refresh":"Refresh slide content.","reload":"Completely reload Showoff.","blank":"Blank the screen.","footer":"Toggle the display footer.","notes":"Toggle notes display.","clear":"Clear code execution results.","pause":"Pause the presentation.","preshow":"Display slideshow of <tt>preshow</tt> images on a timer.","execute":"Execute the first visible code block.","debug":"Show debugging information.","close":"Close"},"stats":{"title":"Viewing Statistics","stray":"of your audience is not viewing the same slide you are.","idle":"of your audience is idle.","current":"Slides currently being viewed","elapsed":"Elapsed time spent on each slide","nodata":"No data to display.","allcurrent":"All audience members are viewing the presenter's slide."},"forms":{"display":"Display Results","save":"Save"},"presenter":{"topbar":{"annotations":"Annotations","edit":"Edit Slide","report":"Report Issue With Slide","stats":"Viewing Statistics","downloads":"Downloads","display":"Display Window","print":"Print Slides","settings":"Settings","newpage":"Open in a new page...","tooltip":{"annotations":"Enable the annotations subsystem.","edit":"Edit current slide in new window.","report":"Report an issue with the current slide.","stats":"See the slides your audience is interacting with.","downloads":"Open the file downloads in a menu or new page.","display":"Enable the Display Window; you should put this on the projector.","print":"Print slides using a new window.","settings":"Open the Settings dialog."}},"preview":{"next":"Next","previous":"Previous"},"mobile":{"update":"Update"},"notes":{"label":"Showoff Notes","personal":"Personal Notes"},"timer":{"label":"Timer:","start":"Start","pause":"Pause","resume":"Resume","cancel":"Cancel","unit":"minutes"},"pace":{"faster":"Speed Up!","slower":"Slow Down!"},"questions":"Audience Questions","annotation":{"tools":"Tools","lines":"Lines","shapes":"Shapes"},"status":{"label":"Slides:"},"settings":{"label":"Settings","close":"Close","follower":{"label":"Update Follower","tooltip":"Send slide change notifications.","description":"When this is enabled, the Showoff server will track your slide changes. Disable it to observe the presentation without inadvertently causing slide changes."},"remote":{"label":"Enable Remote","tooltip":"Enables tracking of other presenters.","description":"When this is enabled, you can load the presenter in another browser (typically on your mobile phone) to control the presentation."},"layout":{"label":"Layout","default":"Default Layout","thumbs":"Display thumbnail previews of the next and previous slides.","beside":"Display the next slide as a large preview in the main presenter view.","floating":"Open the next slide as a floating window.","confirmation":"Browser security requires confirmation before opening a new window.","open":"Open Window","cancel":"cancel","reset":{"label":"Clear Showoff settings.","tooltip":"Reset Showoff UI settings to default values."}},"language":{"label":"Content Language","tooltip":"Select from available translations, or autoselect based on your browser settings.","description":"This presentation is available in different languages. Choose the language you would like to view or leave it at <tt>automatic</tt> to use your browser settings."}},"print":{"label":"Choose type of printed notes","description":"Select the content you'd like to show under the slides.","none":"Don't include notes","notes":"Presenter Notes","handouts":"Audience Handouts"}},"language":{"auto":"Automatic","disable":"Disable Translations"},"error":{"file_not_found":"File Not Found!"}});
+
+  </script>
+
+
+  <script type="text/javascript">
+    // We want the audience members to see automatic tours. We can assume that they won't be
+    // using many server domains like the presenter might.
+    var autoTour = true;
+
+    $( document ).ready(function() {
+      tours['showoff:activity'] = [
+        {
+          element: ".currentSlide .activityToggle",
+          intro: I18n.t('tour.activity.complete')
+        }
+      ];
+
+      tours['showoff:form'] = [
+        {
+          element: ".currentSlide input.save",
+          intro: I18n.t('tour.form.save')
+        }
+      ];
+
+      tours['showoff:menu'] = [
+        {
+          element: "#hamburger",
+          intro: I18n.t('tour.menu.start')
+        },
+        {
+          element: "#navToggle",
+          intro: I18n.t('tour.menu.navigation')
+        },
+        {
+          element: "#fileDownloads",
+          intro: I18n.t('tour.menu.download')
+        },
+        {
+          element: "#paceFaster",
+          intro: I18n.t('tour.menu.pace')
+        },
+        {
+          element: "#questionToggle",
+          intro: I18n.t('tour.menu.questions')
+        },
+        {
+          element: "#feedbackToggle",
+          intro: I18n.t('tour.menu.feedback')
+        }
+      ].filter(function(item) { return (document.querySelector(item['element'])) });
+      // display tips for only the enabled features
+    });
+  </script>
+</head>
+
+<body>
+<div id="questionsIndicator"></div>
+
+<i id="hamburger" class="fa fa-bars fa-2x"></i>
+<div id="sidebarWrapper">
+    <div id="navigationHover"></div>
+    <div id="feedbackSidebar" class="sideMenu">
+    <img id="disconnected" src=".//css/disconnected.png">
+    <h3>Showoff Menu</h3>
+    <div id="navToggle" class="buttonWrapper"><i class=" fa fa-bookmark"></i> Table of Contents</div>
+    <div id="navigation" class="submenu"></div>
+    
+    <hr>
+
+    
+
+    
+
+    <div id="closeMenu" class="buttonWrapper"><i class="fa fa-close"></i> Close</div>
+    <hr>
+
+    <small>
+        <p>Press <code>?</code> for help.</p>
+        <p>All features are anonymous.</p>
+    </small>
+    </div>
+    <div id="sidebarExit"></div>
+</div>
+<div id="help-modal" title="Help">
+  <div id="help">
+    <div>
+      <span class="description">Move to the next slide.</span>
+      <span class="action">NEXT</span>
+      <span class="hotkeys"><span class="key">space</span><span class="key">down</span><span class="key">right</span><span class="key">pagedown</span></span>
+    </div>
+    <div>
+      <span class="description">Move to the previous slide.</span>
+      <span class="action">PREV</span>
+      <span class="hotkeys"><span class="key">up</span><span class="key">left</span><span class="key">pageup</span></span>
+    </div>
+    <div>
+      <span class="description">Show the table of contents menu.</span>
+      <span class="action">CONTENTS</span>
+      <span class="hotkeys"><span class="key">c</span><span class="key">t</span></span>
+    </div>
+    <div>
+      <span class="description">Toggle follow mode.</span>
+      <span class="action">FOLLOW</span>
+      <span class="hotkeys"><span class="key">f</span></span>
+    </div>
+    <div>
+      <span class="description">Show this help dialog.</span>
+      <span class="action">HELP</span>
+      <span class="hotkeys"><span class="key">h</span><span class="key">/</span><span class="key">?</span></span>
+    </div>
+
+    <hr />
+
+    <div>
+      <span class="description">Refresh slide content.</span>
+      <span class="action">REFRESH</span>
+      <span class="hotkeys"><span class="key">r</span></span>
+    </div>
+    <div>
+      <span class="description">Completely reload Showoff.</span>
+      <span class="action">RELOAD</span>
+      <span class="hotkeys"><span class="key">R</span></span>
+    </div>
+    <div>
+      <span class="description">Blank the screen.</span>
+      <span class="action">BLANK</span>
+      <span class="hotkeys"><span class="key">b</span><span class="key">.</span></span>
+    </div>
+    <div>
+      <span class="description">Toggle the display footer.</span>
+      <span class="action">FOOTER</span>
+      <span class="hotkeys"><span class="key">F</span></span>
+    </div>
+    <div>
+      <span class="description">Toggle notes display.</span>
+      <span class="action">NOTES</span>
+      <span class="hotkeys"><span class="key">n</span></span>
+    </div>
+    <div>
+      <span class="description">Clear code execution results.</span>
+      <span class="action">CLEAR</span>
+      <span class="hotkeys"><span class="key">esc</span></span>
+    </div>
+    <div>
+      <span class="description">Pause the presentation.</span>
+      <span class="action">PAUSE</span>
+      <span class="hotkeys"><span class="key">p</span></span>
+    </div>
+    <div>
+      <span class="description">Display slideshow of <tt>preshow</tt> images on a timer.</span>
+      <span class="action">PRESHOW</span>
+      <span class="hotkeys"><span class="key">P</span></span>
+    </div>
+    <div>
+      <span class="description">Execute the first visible code block.</span>
+      <span class="action">EXECUTE</span>
+      <span class="hotkeys"><span class="key">x</span><span class="key">f5</span></span>
+    </div>
+
+    <hr />
+
+    <div>
+      <span class="description">Show debugging information.</span>
+      <span class="action">DEBUG</span>
+      <span class="hotkeys"><span class="key">d</span></span>
+    </div>
+  </div>
+</div>
+
+<div id="preso"><center>loading presentation...</center></div>
+<a id="synchronize"><i class="fa fa-link" aria-hidden="true" href="#"></i> Sync Presentation</a>
+<div id="notes"></div>
+
+<footer id="footer">
+  <span id="followLabel" class="container">Follow Mode: <i id="followMode" class="fa fa-ban" aria-hidden="true"></i></span>
+  <span id="slideInfo" class="container"></span>
+  <span id="debugInfo" class="container"></span>
+  <span id="notesInfo" class="container"></span>
+  <span id="slideFilename" class="container"></span>
+  <img id="disconnected" src=".//css/disconnected.png" />
+</footer>
+
+<div id="slides" class="offscreen" style="display:none;">
+<div data-section="intro" data-title="intro" id="intro_intro" class="slide title center" data-transition="none">
+<div class="content title center" ref="intro/intro">
+<h1>Advanced PeopleSoft Administration</h1>
+
+<p><img src="./file//_images/psadmin_io_white_400.png" class=" psadminlogo" alt=""></p>
+</div>
+<canvas class="annotations"></canvas>
+</div>
+<div data-section="intro" data-title="about" id="intro_about1" class="slide bullets" data-transition="none">
+<div class="content bullets" ref="intro/about:1">
+<h1>Introductions</h1>
+
+<ol>
+<li>Kyle Benson</li>
+<li>Dan Iverson</li>
+</ol>
+
+<p><img src="./file///_images/podcast.png" class=" podcastlogo" alt=""></p>
+</div>
+<canvas class="annotations"></canvas>
+</div>
+<div data-section="intro" data-title="about" id="intro_about2" class="slide bullets incremental" data-transition="none">
+<div class="content bullets incremental" ref="intro/about:2">
+<h1>Kyle Benson</h1>
+
+<ol>
+<li>10 Years PeopleSoft Experience</li>
+<li>Developer &gt; Sys Admin &gt; Jr. DBA &gt; DevOps Dude &gt; ?</li>
+</ol>
+</div>
+<canvas class="annotations"></canvas>
+</div>
+<div data-section="intro" data-title="about" id="intro_about3" class="slide bullets" data-transition="none">
+<div class="content bullets" ref="intro/about:3">
+<h1>Hennepin County</h1>
+
+<ol>
+<li>Largest county in Minnesota</li>
+<li>Minneapolis county seat</li>
+<li>~8,000 employees</li>
+<li>Budget $1.9 billion</li>
+<li>FSCM, HCM, ELM, Interaction Hub</li>
+<li>9.2 and 8.54 (8.55 this weekend)</li>
+</ol>
+
+<p><img src="./file///_images/hc.tif" class=" smallright" alt=""></p>
+</div>
+<canvas class="annotations"></canvas>
+</div>
+<div data-section="intro" data-title="about" id="intro_about4" class="slide bullets incremental" data-transition="none">
+<div class="content bullets incremental" ref="intro/about:4">
+<h1>Dan Iverson</h1>
+
+<ol>
+<li>14 Years PeopleSoft Experience</li>
+<li>Developer, PeopleSoft Admin, Team Leader, Project Manager, AR Functional</li>
+<li>Independent Consultant</li>
+<li>Serve in the National Guard (16 years)</li>
+</ol>
+</div>
+<canvas class="annotations"></canvas>
+</div>
+<div data-section="intro" data-title="about" id="intro_about5" class="slide bullets" data-transition="none">
+<div class="content bullets" ref="intro/about:5">
+<h1>City of Minneapolis</h1>
+
+<ol>
+<li>Populate: 410,000 </li>
+<li>2017 Budget: $1.3 Billion</li>
+<li>FS Image 23, HR Image 23 (Oct), ELM Image 13</li>
+<li>PeopleTools 8.55.17</li>
+</ol>
+
+<p><img src="./file///_images/cityofmpls.png" class=" smallright" alt=""></p>
+</div>
+<canvas class="annotations"></canvas>
+</div>
+<div data-section="intro" data-title="agenda" id="intro_agenda" class="slide bullets" data-transition="none">
+<div class="content bullets" ref="intro/agenda">
+<h1>Agenda</h1>
+
+<ol>
+<li>Deployment Packages</li>
+<li>Custom DPK Modules</li>
+<li>Bootstrapping and Deploying</li>
+<li>Git and the DPK</li>
+</ol>
+
+
+</div>
+<div class="notes-section notes"><p>
+Survey the audience for DPK usage
+</p></div>
+<canvas class="annotations"></canvas>
+</div>
+<div data-section="dpk" data-title="dpk" id="dpk_dpk1" class="slide center subsection blue" data-transition="none">
+<div class="content center subsection blue" ref="dpk/dpk:1">
+<h1>Deployment Packages</h1>
+</div>
+<canvas class="annotations"></canvas>
+</div>
+<div data-section="dpk" data-title="dpk" id="dpk_dpk2" class="slide bullets incremental" data-transition="fade">
+<div class="content bullets incremental" ref="dpk/dpk:2">
+<h1>Deployment Packages</h1>
+
+<ol>
+<li>Delivered automation for building environments</li>
+<li>Define your environments upfront</li>
+<li>Implementation is abstracted</li>
+<li>Consistent and repeatable infrastructure</li>
+<li>Configuration is documented: <code>psft_customizations.yaml</code>
+</li>
+<li>Extend the DPK to customize your builds</li>
+</ol>
+</div>
+<canvas class="annotations"></canvas>
+</div>
+<div data-section="dpk" data-title="dpk" id="dpk_dpk3" class="slide bullets incremental" data-transition="fade">
+<div class="content bullets incremental" ref="dpk/dpk:3">
+<h1>DPK Tools</h1>
+
+<ol>
+<li>Puppet</li>
+<li>YAML</li>
+<li>Heira</li>
+<li>Facter</li>
+<li>Ruby, Python</li>
+</ol>
+</div>
+<canvas class="annotations"></canvas>
+</div>
+<div data-section="dpk" data-title="dpk" id="dpk_dpk4" class="slide bullets incremental" data-transition="fade">
+<div class="content bullets incremental" ref="dpk/dpk:4">
+<h1>Extend the DPK</h1>
+
+<ol>
+<li>Include your configuration in DPK builds</li>
+<li>Extend psft_customizations.yaml</li>
+<li>Deploy your own changes with Puppet</li>
+<li>Signon page</li>
+<li>SSL Certificates</li>
+<li>Custom Java Libraries</li>
+</ol>
+</div>
+<canvas class="annotations"></canvas>
+</div>
+<div data-section="custom_modules" data-title="custom" id="custom_modules_custom1" class="slide center subsection blue" data-transition="none">
+<div class="content center subsection blue" ref="custom_modules/custom:1">
+<h1>Custom DPK Modules</h1>
+</div>
+<canvas class="annotations"></canvas>
+</div>
+<div data-section="custom_modules" data-title="custom" id="custom_modules_custom2" class="slide bullets incremental" data-transition="fade">
+<div class="content bullets incremental" ref="custom_modules/custom:2">
+<h1>Custom DPK Modules</h1>
+
+<ol>
+<li>Fill in DPK gaps</li>
+<li>Started by Eric Bollinger (CU)</li>
+<li>Make it your system, not a Demo environment</li>
+<li>Open Source (github.com/psadmin-io)</li>
+<li>Windows and Linux support</li>
+</ol>
+</div>
+<canvas class="annotations"></canvas>
+</div>
+<div data-section="custom_modules" data-title="custom" id="custom_modules_custom3" class="slide bullets" data-transition="none">
+<div class="content bullets" ref="custom_modules/custom:3">
+<h1>io_weblogic</h1>
+
+<p>WebLogic Domain Configuration</p>
+
+<ol>
+<li>Certificates</li>
+<li>Java Options</li>
+<li><code>pskey</code></li>
+<li>JCE</li>
+</ol>
+</div>
+<canvas class="annotations"></canvas>
+</div>
+<div data-section="custom_modules" data-title="custom" id="custom_modules_custom4" class="slide bullets" data-transition="none">
+<div class="content bullets" ref="custom_modules/custom:4">
+<h1>io_portwar</h1>
+
+<p>Website Configuration</p>
+
+<ol>
+<li><code>configuration.properties</code></li>
+<li>Cookie Name</li>
+<li>Index Redirect</li>
+<li><code>text.properties</code></li>
+<li>Custom Signon</li>
+</ol>
+</div>
+<canvas class="annotations"></canvas>
+</div>
+<div data-section="custom_modules" data-title="custom" id="custom_modules_custom5" class="slide bullets incremental" data-transition="fade">
+<div class="content bullets incremental" ref="custom_modules/custom:5">
+<h1>Install Modules</h1>
+
+<ol>
+<li><code>git clone https://github.com/psadmin-io/psadminio-io_portalwar</code></li>
+<li>
+<code>puppet module install psadminio_io_portal</code> (future)</li>
+<li>
+<p>Enable Data Bindings</p>
+
+<pre class="highlight"><code class="language-yaml">puppet.conf
+# data_binding_terminus=none</code></pre>
+</li>
+</ol>
+</div>
+<canvas class="annotations"></canvas>
+</div>
+<div data-section="custom_modules" data-title="custom" id="custom_modules_custom6" class="slide center subsection blue" data-transition="none">
+<div class="content center subsection blue" ref="custom_modules/custom:6">
+<h1>Demo</h1>
+
+
+</div>
+<div class="notes-section notes">
+
+<p>Show off current state:</p>
+
+<ol>
+<li>Show WL default page at root of web server</li>
+<li>Open <code>text.properties</code>
+</li>
+<li>Open <code>webLogic.xml</code> (cookie name)</li>
+</ol>
+
+<p>Clone and update <code>psft_customizations.yaml</code></p>
+
+<ol>
+<li><code>cd C:\psft\dpk\puppet\production\modules</code></li>
+<li><code>git clone https://github.com/psadmin-io/psadminio-io_portalwar.git io_portalwar</code></li>
+<li><code>puppet module install puppetlabs-inifile --confdir=c:\psft\dpk\puppet</code></li>
+<li>Enable Data Bindings</li>
+<li>
+<p>Update <code>psft_customizations.yaml</code></p>
+
+<pre class="highlight"><code class="language-yaml"># ############
+# io_portalwar
+# ############
+
+io_portalwar::text_properties:
+  "%{hiera('pia_domain_name')}":
+    '138':  'Hello OOW17'
+
+io_portalwar::pia_cookie_name: "%{hiera('db_name')}-PORTAL-PSJSESSIONID"
+
+io_portalwar::index_redirect: true
+io_portalwar::redirect_target: "./%{hiera('pia_site_name')}/signon.html"</code></pre>
+</li>
+<li><p>Run <code>puppet apply --confdir=c:\psft\dpk\puppet -d -e "contain ::io_portalwar"</code></p></li>
+<li><p><code>get-service -name *PIA* | restart-service</code></p></li>
+</ol>
+
+</div>
+<canvas class="annotations"></canvas>
+</div>
+<div data-section="custom_modules" data-title="custom" id="custom_modules_custom7" class="slide bullets" data-transition="none">
+<div class="content bullets" ref="custom_modules/custom:7">
+<h1>Configure io_portalwar</h1>
+
+<pre class="highlight"><code class="language-yaml">io_portalwar::config_properties:
+  "%{hiera('pia_domain_name')}":
+    WebProfile: EXTERNAL</code></pre>
+</div>
+<canvas class="annotations"></canvas>
+</div>
+<div data-section="custom_modules" data-title="custom" id="custom_modules_custom8" class="slide bullets" data-transition="none">
+<div class="content bullets" ref="custom_modules/custom:8">
+<h1>Configure io_portalwar</h1>
+
+<pre class="highlight"><code class="language-yaml">io_portalwar::pia_cookie_name: "%{hiera('db_name')}-PORTAL-PSJSESSIONID"</code></pre>
+</div>
+<canvas class="annotations"></canvas>
+</div>
+<div data-section="custom_modules" data-title="custom" id="custom_modules_custom9" class="slide bullets" data-transition="none">
+<div class="content bullets" ref="custom_modules/custom:9">
+<h1>Configure io_portwar</h1>
+
+<pre class="highlight"><code class="language-yaml">io_portalwar::text_properties:
+  "%{hiera('pia_domain_name')}":
+    '138':  'Hello OOW17'</code></pre>
+</div>
+<canvas class="annotations"></canvas>
+</div>
+<div data-section="custom_modules" data-title="custom" id="custom_modules_custom10" class="slide bullets" data-transition="none">
+<div class="content bullets" ref="custom_modules/custom:10">
+<h1>Configure io_portalwar</h1>
+
+<pre class="highlight"><code class="language-yaml">io_portalwar::index_redirect: true
+io_portalwar::redirect_target: "./%{hiera('pia_site_name')}/signon.html"</code></pre>
+</div>
+<canvas class="annotations"></canvas>
+</div>
+<div data-section="custom_modules" data-title="custom" id="custom_modules_custom11" class="slide bullets" data-transition="none">
+<div class="content bullets" ref="custom_modules/custom:11">
+<h1>Configure io_weblogic</h1>
+
+<pre class="highlight"><code class="language-yaml">io_weblogic::java_options:
+  "%{hiera('pia_domain_name')}":
+    -Xms:                              '1024m'
+    -Xmx:                              '1024m'
+    -Dweblogic.threadpool.MinPoolSize: '=100'
+    -Dhttps.protocols:                 '=TLSv1,TLSv1.1,TLSv1.2'</code></pre>
+</div>
+<canvas class="annotations"></canvas>
+</div>
+<div data-section="custom_modules" data-title="custom" id="custom_modules_custom12" class="slide bullets" data-transition="none">
+<div class="content bullets" ref="custom_modules/custom:12">
+<h1>Configure io_weblogic</h1>
+
+<pre class="highlight"><code class="language-yaml">io_weblogic::install_jce: true</code></pre>
+</div>
+<canvas class="annotations"></canvas>
+</div>
+<div data-section="custom_modules" data-title="custom" id="custom_modules_custom13" class="slide center subsection blue" data-transition="none">
+<div class="content center subsection blue" ref="custom_modules/custom:13">
+<h1>Demo</h1>
+</div>
+<canvas class="annotations"></canvas>
+</div>
+<div data-section="scripting" data-title="scripting" id="scripting_scripting1" class="slide center subsection blue" data-transition="none">
+<div class="content center subsection blue" ref="scripting/scripting:1">
+<h1>Approaches to DPKs</h1>
+</div>
+<canvas class="annotations"></canvas>
+</div>
+<div data-section="scripting" data-title="scripting" id="scripting_scripting2" class="slide bullets incremental" data-transition="fade">
+<div class="content bullets incremental" ref="scripting/scripting:2">
+<h1>Approaches</h1>
+
+<ol>
+<li>DPK tools, Manual domain</li>
+<li>DPK tools and domains, Manual config</li>
+<li>DPK and Custom modules</li>
+<li>Customized DPK</li>
+</ol>
+</div>
+<canvas class="annotations"></canvas>
+</div>
+<div data-section="scripting" data-title="scripting" id="scripting_scripting3" class="slide bullets incremental" data-transition="fade">
+<div class="content bullets incremental" ref="scripting/scripting:3">
+<h1>Managing Custom DPK</h1>
+
+<ol>
+<li>Push files from network share</li>
+<li>Symlink to dpkfiles in git repo</li>
+<li>Manual git repo</li>
+<li>Puppet server</li>
+</ol>
+</div>
+<canvas class="annotations"></canvas>
+</div>
+<div data-section="scripting" data-title="scripting" id="scripting_scripting4" class="slide bullets incremental" data-transition="fade">
+<div class="content bullets incremental" ref="scripting/scripting:4">
+<h1>Makefile for dpkfiles</h1>
+
+<ol>
+<li>Similar approach to dotfiles</li>
+<li>Create a git repo containing all custom dpkfiles</li>
+<li>Include a <code>make</code> file, which creates symlinks</li>
+<li>Example: <code>make link TYPE=prd_portal</code>
+</li>
+</ol>
+</div>
+<canvas class="annotations"></canvas>
+</div>
+<div data-section="scripting" data-title="scripting" id="scripting_scripting5" class="slide bullets" data-transition="none">
+<div class="content bullets" ref="scripting/scripting:5">
+<h1>Makefile for dpkfiles</h1>
+
+<pre class="highlight"><code class="language-make">$PUPPET_CONFIG_DIR/
+    data/
+        psft_customization.yaml -&gt; $DPKFILES_DIR/data/prd_portal.psft_customization.yaml
+    manifests/
+        site.pp -&gt; $DPKFILES_DIR/manifests/prd_portal.site.pp
+    modules/
+        io_roles -&gt; $DPKFILES_DIR/modules/io_roles
+        io_profiles -&gt; $DPKFILES_DIR/modules/io_profiles
+        io_config -&gt; $DPKFILES_DIR/modules/io_config</code></pre>
+</div>
+<canvas class="annotations"></canvas>
+</div>
+<div data-section="git" data-title="git" id="git_git1" class="slide center subsection blue" data-transition="none">
+<div class="content center subsection blue" ref="git/git:1">
+<h1>Git and the DPK</h1>
+
+
+</div>
+<div class="notes-section notes">
+
+<p>Ask audience: "who uses Git?"</p>
+
+</div>
+<canvas class="annotations"></canvas>
+</div>
+<div data-section="git" data-title="git" id="git_git2" class="slide bullets incremental" data-transition="none">
+<div class="content bullets incremental" ref="git/git:2">
+<h1>Git</h1>
+
+<ol>
+<li>Version Control Software</li>
+<li>Build by Linus for Linux</li>
+<li>Used everywhere, including the Windows kernel</li>
+</ol>
+</div>
+<canvas class="annotations"></canvas>
+</div>
+<div data-section="git" data-title="git" id="git_git3" class="slide bullets incremental" data-transition="none">
+<div class="content bullets incremental" ref="git/git:3">
+<h1>Controlling DPK Changes</h1>
+
+<ol>
+<li>Put the DPK code into a Git repository</li>
+<li>Manage changes to DPK and YAML files</li>
+<li>Integrate custom DPK modules (as Git sub-modules)</li>
+<li>Manage histroy</li>
+</ol>
+</div>
+<canvas class="annotations"></canvas>
+</div>
+<div data-section="git" data-title="git" id="git_git4" class="slide bullets incremental" data-transition="none">
+<div class="content bullets incremental" ref="git/git:4">
+<h1>Git Branching</h1>
+
+<ol>
+<li>Test changes on a branch</li>
+<li>Work on changes without impacting the main code line</li>
+<li>Assign branches to servers</li>
+</ol>
+</div>
+<canvas class="annotations"></canvas>
+</div>
+<div data-section="git" data-title="git" id="git_git5" class="slide bullets incremental" data-transition="none">
+<div class="content bullets incremental" ref="git/git:5">
+<h1>Collaborate</h1>
+
+<ol>
+<li>Share code on GitHub</li>
+<li>
+<code>ps-project-git</code> - App Designer projects and Git</li>
+<li>(Idea 12562) Support more Export to File options</li>
+<li>This presetation is managed by Git and on GitHub :)</li>
+</ol>
+</div>
+<canvas class="annotations"></canvas>
+</div>
+<div data-section="git" data-title="git" id="git_git6" class="slide bullets" data-transition="none">
+<div class="content bullets" ref="git/git:6">
+<h1>Git Utilities</h1>
+
+<ol>
+<li>VisualStudio Code</li>
+<li>GIT-POSH</li>
+<li><a href="https://git-scm.com" target="_blank">https://git-scm.com</a></li>
+<li>Pro-Git (online book)</li>
+<li>GitLab (cloud or local)</li>
+</ol>
+</div>
+<canvas class="annotations"></canvas>
+</div>
+<div data-section="closing" data-title="closing" id="closing_closing" class="slide bullets" data-transition="none">
+<div class="content bullets" ref="closing/closing">
+<h1>More Resources</h1>
+
+<ol>
+<li>Free DPK Quickstart @ psadmin.io/courses</li>
+<li>Custom DPK Modules @ github.com/psadmin-io</li>
+<li>PS Admin Community @ psadmin.io/community</li>
+</ol>
+</div>
+<canvas class="annotations"></canvas>
+</div>
+</div>
+<div id="buttonNav">
+  <div id="buttonPrev"><i class="fa fa-chevron-left fa-lg"></i> Previous</div><div id="buttonNext">Next <i class="fa fa-chevron-right fa-lg"></i></div>
+</div>
+<div id="pauseScreen">
+  PAUSED
+</div>
+
+</body>
+</html>
