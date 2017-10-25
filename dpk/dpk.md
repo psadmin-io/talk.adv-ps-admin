@@ -28,7 +28,7 @@
 # Extend the DPK
 
 1. Include your configuration in DPK builds
-1. Extend psft_customizations.yaml
+1. Extend `psft_customizations.yaml`
 1. Deploy your own changes with Puppet
 1. Signon page
 1. SSL Certificates
