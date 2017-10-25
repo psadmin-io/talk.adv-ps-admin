@@ -1,45 +1,28 @@
 !SLIDE center subsection blue
 
-# Approaches to DPKs
+# Orchestration
 
 !SLIDE bullets incremental transition=fade
 
-# Approaches
+# Orchestration
 
-1. DPK tools, Manual domain
-1. DPK tools and domains, Manual config
-1. DPK and Custom modules
-1. Customized DPK
+1. Coordination of automated tasks and workflows across various tools, teams and environments.
+1. Automating tasks vs. Configuration Management
 
 !SLIDE bullets incremental transition=fade
 
-# Managing Custom DPK
+# Automating PSADMIN tasks
 
-1. Push files from network share
-1. Symlink to dpkfiles in git repo
-1. Manual git repo
-1. Puppet server
+1. psadmin command line - https://goo.gl/9xxEJo
+1. WLST for WebLogic    - https://goo.gl/69w1to
+1. `psadmin-plus`       - https://github.com/psadmin-io/psadmin-plus
 
 !SLIDE bullets incremental transition=fade
 
-# Makefile for dpkfiles
+# Orchestation Tools
 
-1. Similar approach to dotfiles
-1. Create a git repo containing all custom dpkfiles
-1. Include a `make` file, which creates symlinks
-1. Example: `make link TYPE=prd_portal`
-
-!SLIDE bullets
-
-# Makefile for dpkfiles
-
-    @@@ make
-    $PUPPET_CONFIG_DIR/
-        data/
-            psft_customization.yaml -> $DPKFILES_DIR/data/prd_portal.psft_customization.yaml
-        manifests/
-            site.pp -> $DPKFILES_DIR/manifests/prd_portal.site.pp
-        modules/
-            io_roles -> $DPKFILES_DIR/modules/io_roles
-            io_profiles -> $DPKFILES_DIR/modules/io_profiles
-            io_config -> $DPKFILES_DIR/modules/io_config
+1. Ansible     - https://www.ansible.com/ 
+1. Rundeck     - http://rundeck.org/ 
+1. EM Jobs     - https://goo.gl/Z7gLrh
+1. Puppet Bolt - https://puppet.com/products/puppet-bolt
+1. MCollection - https://puppet.com/docs/mcollective/current
