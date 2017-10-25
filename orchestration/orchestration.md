@@ -17,6 +17,10 @@
 1. WLST for WebLogic    - https://goo.gl/69w1to
 1. `psadmin-plus`       - https://github.com/psadmin-io/psadmin-plus
 
+!SLIDE center subsection blue
+
+# Demo
+
 !SLIDE bullets incremental transition=fade
 
 # Orchestation Tools
