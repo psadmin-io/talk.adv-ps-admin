@@ -489,8 +489,8 @@
 <ol>
 <li>Deployment Packages</li>
 <li>Custom DPK Modules</li>
-<li>Bootstrapping and Deploying</li>
-<li>Git and the DPK</li>
+<li>Orchestration</li>
+<li>Git</li>
 </ol>
 
 
@@ -653,7 +653,7 @@ Survey the audience for DPK usage
 
 io_portalwar::text_properties:
   "%{hiera('pia_domain_name')}":
-    '138':  'Hello OOW17'
+    '138':  'Hello UMRUG'
 
 io_portalwar::pia_cookie_name: "%{hiera('db_name')}-PORTAL-PSJSESSIONID"
 
@@ -731,71 +731,65 @@ io_portalwar::redirect_target: "./%{hiera('pia_site_name')}/signon.html"</code><
 </div>
 <canvas class="annotations"></canvas>
 </div>
-<div data-section="scripting" data-title="scripting" id="scripting_scripting1" class="slide center subsection blue" data-transition="none">
-<div class="content center subsection blue" ref="scripting/scripting:1">
-<h1>Approaches to DPKs</h1>
+<div data-section="orchestration" data-title="orchestration" id="orchestration_orchestration1" class="slide center subsection blue" data-transition="none">
+<div class="content center subsection blue" ref="orchestration/orchestration:1">
+<h1>Orchestration</h1>
 </div>
 <canvas class="annotations"></canvas>
 </div>
-<div data-section="scripting" data-title="scripting" id="scripting_scripting2" class="slide bullets incremental" data-transition="fade">
-<div class="content bullets incremental" ref="scripting/scripting:2">
-<h1>Approaches</h1>
+<div data-section="orchestration" data-title="orchestration" id="orchestration_orchestration2" class="slide bullets incremental" data-transition="fade">
+<div class="content bullets incremental" ref="orchestration/orchestration:2">
+<h1>Orchestration</h1>
 
 <ol>
-<li>DPK tools, Manual domain</li>
-<li>DPK tools and domains, Manual config</li>
-<li>DPK and Custom modules</li>
-<li>Customized DPK</li>
+<li>Coordination of automated tasks and workflows across various tools, teams and environments.</li>
+<li>Automating tasks vs. Configuration Management</li>
 </ol>
 </div>
 <canvas class="annotations"></canvas>
 </div>
-<div data-section="scripting" data-title="scripting" id="scripting_scripting3" class="slide bullets incremental" data-transition="fade">
-<div class="content bullets incremental" ref="scripting/scripting:3">
-<h1>Managing Custom DPK</h1>
+<div data-section="orchestration" data-title="orchestration" id="orchestration_orchestration3" class="slide bullets incremental" data-transition="fade">
+<div class="content bullets incremental" ref="orchestration/orchestration:3">
+<h1>Automating PSADMIN tasks</h1>
 
 <ol>
-<li>Push files from network share</li>
-<li>Symlink to dpkfiles in git repo</li>
-<li>Manual git repo</li>
-<li>Puppet server</li>
-</ol>
-</div>
-<canvas class="annotations"></canvas>
-</div>
-<div data-section="scripting" data-title="scripting" id="scripting_scripting4" class="slide bullets incremental" data-transition="fade">
-<div class="content bullets incremental" ref="scripting/scripting:4">
-<h1>Makefile for dpkfiles</h1>
-
-<ol>
-<li>Similar approach to dotfiles</li>
-<li>Create a git repo containing all custom dpkfiles</li>
-<li>Include a <code>make</code> file, which creates symlinks</li>
-<li>Example: <code>make link TYPE=prd_portal</code>
+<li>psadmin command line - <a href="https://goo.gl/9xxEJo" target="_blank">https://goo.gl/9xxEJo</a>
+</li>
+<li>WLST for WebLogic    - <a href="https://goo.gl/69w1to" target="_blank">https://goo.gl/69w1to</a>
+</li>
+<li>
+<code>psadmin-plus</code>       - <a href="https://github.com/psadmin-io/psadmin-plus" target="_blank">https://github.com/psadmin-io/psadmin-plus</a>
 </li>
 </ol>
 </div>
 <canvas class="annotations"></canvas>
 </div>
-<div data-section="scripting" data-title="scripting" id="scripting_scripting5" class="slide bullets" data-transition="none">
-<div class="content bullets" ref="scripting/scripting:5">
-<h1>Makefile for dpkfiles</h1>
+<div data-section="orchestration" data-title="orchestration" id="orchestration_orchestration4" class="slide center subsection blue" data-transition="none">
+<div class="content center subsection blue" ref="orchestration/orchestration:4">
+<h1>Demo</h1>
+</div>
+<canvas class="annotations"></canvas>
+</div>
+<div data-section="orchestration" data-title="orchestration" id="orchestration_orchestration5" class="slide bullets incremental" data-transition="fade">
+<div class="content bullets incremental" ref="orchestration/orchestration:5">
+<h1>Orchestation Tools</h1>
 
-<pre class="highlight"><code class="language-make">$PUPPET_CONFIG_DIR/
-    data/
-        psft_customization.yaml -&gt; $DPKFILES_DIR/data/prd_portal.psft_customization.yaml
-    manifests/
-        site.pp -&gt; $DPKFILES_DIR/manifests/prd_portal.site.pp
-    modules/
-        io_roles -&gt; $DPKFILES_DIR/modules/io_roles
-        io_profiles -&gt; $DPKFILES_DIR/modules/io_profiles
-        io_config -&gt; $DPKFILES_DIR/modules/io_config</code></pre>
+<ol>
+<li>Ansible     - <a href="https://www.ansible.com/" target="_blank">https://www.ansible.com/</a> </li>
+<li>Rundeck     - <a href="http://rundeck.org/" target="_blank">http://rundeck.org/</a> </li>
+<li>EM Jobs     - <a href="https://goo.gl/Z7gLrh" target="_blank">https://goo.gl/Z7gLrh</a>
+</li>
+<li>Puppet Bolt - <a href="https://puppet.com/products/puppet-bolt" target="_blank">https://puppet.com/products/puppet-bolt</a>
+</li>
+<li>MCollection - <a href="https://puppet.com/docs/mcollective/current" target="_blank">https://puppet.com/docs/mcollective/current</a>
+</li>
+</ol>
 </div>
 <canvas class="annotations"></canvas>
 </div>
 <div data-section="git" data-title="git" id="git_git1" class="slide center subsection blue" data-transition="none">
 <div class="content center subsection blue" ref="git/git:1">
-<h1>Git and the DPK</h1>
+<h1>Git</h1>
 
 
 </div>
@@ -826,14 +820,28 @@ io_portalwar::redirect_target: "./%{hiera('pia_site_name')}/signon.html"</code><
 <li>Put the DPK code into a Git repository</li>
 <li>Manage changes to DPK and YAML files</li>
 <li>Integrate custom DPK modules (as Git sub-modules)</li>
-<li>Manage histroy</li>
+<li>Manage history</li>
 </ol>
 </div>
 <canvas class="annotations"></canvas>
 </div>
 <div data-section="git" data-title="git" id="git_git4" class="slide bullets incremental" data-transition="none">
 <div class="content bullets incremental" ref="git/git:4">
+<h1>Git and SQR/COBOL</h1>
+
+<ol>
+<li>Use Git to manage PS_CUST_HOME</li>
+<li>Version your <code>sqr</code> and <code>src</code> folders</li>
+<li>Keep a history of changes</li>
+</ol>
+</div>
+<canvas class="annotations"></canvas>
+</div>
+<div data-section="git" data-title="git" id="git_git5" class="slide bullets incremental" data-transition="none">
+<div class="content bullets incremental" ref="git/git:5">
 <h1>Git Branching</h1>
+
+<p><img src="./file//_images/GitNetwork.png" alt=""></p>
 
 <ol>
 <li>Test changes on a branch</li>
@@ -843,8 +851,8 @@ io_portalwar::redirect_target: "./%{hiera('pia_site_name')}/signon.html"</code><
 </div>
 <canvas class="annotations"></canvas>
 </div>
-<div data-section="git" data-title="git" id="git_git5" class="slide bullets incremental" data-transition="none">
-<div class="content bullets incremental" ref="git/git:5">
+<div data-section="git" data-title="git" id="git_git6" class="slide bullets incremental" data-transition="none">
+<div class="content bullets incremental" ref="git/git:6">
 <h1>Collaborate</h1>
 
 <ol>
@@ -852,13 +860,13 @@ io_portalwar::redirect_target: "./%{hiera('pia_site_name')}/signon.html"</code><
 <li>
 <code>ps-project-git</code> - App Designer projects and Git</li>
 <li>(Idea 12562) Support more Export to File options</li>
-<li>This presetation is managed by Git and on GitHub :)</li>
+<li>This presentation is managed by Git and on GitHub :)</li>
 </ol>
 </div>
 <canvas class="annotations"></canvas>
 </div>
-<div data-section="git" data-title="git" id="git_git6" class="slide bullets" data-transition="none">
-<div class="content bullets" ref="git/git:6">
+<div data-section="git" data-title="git" id="git_git7" class="slide bullets" data-transition="none">
+<div class="content bullets" ref="git/git:7">
 <h1>Git Utilities</h1>
 
 <ol>
@@ -879,6 +887,7 @@ io_portalwar::redirect_target: "./%{hiera('pia_site_name')}/signon.html"</code><
 <li>Free DPK Quickstart @ psadmin.io/courses</li>
 <li>Custom DPK Modules @ github.com/psadmin-io</li>
 <li>PS Admin Community @ psadmin.io/community</li>
+<li>psadmin.conf Talks @ psadmin.io/conference</li>
 </ol>
 </div>
 <canvas class="annotations"></canvas>
