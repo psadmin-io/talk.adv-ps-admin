@@ -1,6 +1,6 @@
 !SLIDE center subsection blue
 
-# Git
+# Git and the DPK
 
 ~~~SECTION:notes~~~
 
@@ -23,21 +23,11 @@ Ask audience: "who uses Git?"
 1. Put the DPK code into a Git repository
 1. Manage changes to DPK and YAML files
 1. Integrate custom DPK modules (as Git sub-modules)
-1. Manage history
-
-!SLIDE bullets incremental
-
-# Git and SQR/COBOL
-
-1. Use Git to manage PS_CUST_HOME
-1. Version your `sqr` and `src` folders
-1. Keep a history of changes
+1. Manage histroy
 
 !SLIDE bullets incremental
 
 # Git Branching
-
-![](../_images/GitNetwork.png)
 
 1. Test changes on a branch
 1. Work on changes without impacting the main code line
@@ -50,7 +40,7 @@ Ask audience: "who uses Git?"
 1. Share code on GitHub
 1. `ps-project-git` - App Designer projects and Git
 1. (Idea 12562) Support more Export to File options
-1. This presentation is managed by Git and on GitHub :)
+1. This presetation is managed by Git and on GitHub :)
 
 !SLIDE bullets
 

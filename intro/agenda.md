@@ -4,8 +4,8 @@
 
 1. Deployment Packages
 1. Custom DPK Modules
-1. Orchestration
-1. Git
+1. Bootstrapping and Deploying
+1. Git and the DPK
 
 ~~~SECTION:notes~~~
 Survey the audience for DPK usage
