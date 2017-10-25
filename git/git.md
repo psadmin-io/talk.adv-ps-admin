@@ -1,6 +1,6 @@
 !SLIDE center subsection blue
 
-# Git and the DPK
+# Git
 
 ~~~SECTION:notes~~~
 
@@ -27,7 +27,17 @@ Ask audience: "who uses Git?"
 
 !SLIDE bullets incremental
 
+# Git and SQR/COBOL
+
+1. Use Git to manage PS_CUST_HOME
+1. Version your `sqr` and `src` folders
+1. Keep a history of changes
+
+!SLIDE bullets incremental
+
 # Git Branching
+
+![](../_images/GitNetwork.png)
 
 1. Test changes on a branch
 1. Work on changes without impacting the main code line
@@ -40,7 +50,7 @@ Ask audience: "who uses Git?"
 1. Share code on GitHub
 1. `ps-project-git` - App Designer projects and Git
 1. (Idea 12562) Support more Export to File options
-1. This presetation is managed by Git and on GitHub :)
+1. This presentation is managed by Git and on GitHub :)
 
 !SLIDE bullets
 
