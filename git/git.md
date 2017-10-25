@@ -23,7 +23,7 @@ Ask audience: "who uses Git?"
 1. Put the DPK code into a Git repository
 1. Manage changes to DPK and YAML files
 1. Integrate custom DPK modules (as Git sub-modules)
-1. Manage histroy
+1. Manage history
 
 !SLIDE bullets incremental
 
