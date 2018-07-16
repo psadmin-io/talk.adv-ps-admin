@@ -12,10 +12,7 @@
     "intro/intro.md",
     "intro/about.md",
     "intro/agenda.md",
-    "dpk/dpk.md",
-    "custom_modules/custom.md",
-    "scripting/scripting.md",
-    "git/git.md",
+    "psa/psa.md",
     "intro/closing.md"
   ]
 }
