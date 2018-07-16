@@ -54,7 +54,7 @@ All of the main Change Assistant functions are available from the command line. 
 There are more options, but I feel these are the most valuable. These let you automate the PI provisioning process (coupled with Vagabond). And moving data between PI instances. This is important if you want to use the PUM features we'll talk about in the next section.
 ~~~ENDSECTION~~~
 
-!SLIDE center subsection blue
+!SLIDE center subsection grey
 
 # Demo
 
@@ -80,7 +80,7 @@ Let's use a script to default the common values and so we reuse the command line
 > The powershell script can be modified to fit your installation patterns, but its a handy tool to simplify CA deployments.
 ~~~ENDSECTION~~~
 
-!SLIDE center subsection blue
+!SLIDE center subsection grey
 
 # Demo
 
