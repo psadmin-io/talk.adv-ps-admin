@@ -19,7 +19,7 @@ body {
   background-color: white;
 }
 
- #preso,
+#preso,
 .slide {
     width: 1440px !important;
     height: 900px !important; 
@@ -67,6 +67,10 @@ body {
   color: #1392FE ;
   font-size: 90px;
   font-variant: normal;
+}
+
+.white {
+  background-color: white;
 }
 
 .grey {
@@ -131,3 +135,13 @@ code {
 #hamburger:hover {
   background-color: #1392FE;
 }
+
+/* bullets */
+.bullets > ul > li {
+  text-align: left;
+  padding: 0px;
+} 
+
+.bullets ul {
+  list-style: disc;
+} 
