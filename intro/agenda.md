@@ -2,10 +2,10 @@
 
 # Agenda
 
-1. Deployment Packages
-1. Custom DPK Modules
-1. Bootstrapping and Deploying
-1. Git and the DPK
+1. psadmin-plus
+1. ACM and Custom Facts
+1. Headless Change Assistant
+1. Vagabond and ps-terraform
 
 ~~~SECTION:notes~~~
 Survey the audience for DPK usage
