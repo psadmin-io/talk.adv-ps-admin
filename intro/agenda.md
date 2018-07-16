@@ -3,7 +3,7 @@
 # Agenda
 
 1. psadmin-plus
-1. ACM and Custom Facts
+1. ACM
 1. Headless Change Assistant
 1. Vagabond and ps-terraform
 
