@@ -2,7 +2,7 @@
 
 # psadmin-plus
 
-!SLIDE bullets transition=fade
+!SLIDE bullets 
 
 # psadmin-plus
 
@@ -79,9 +79,9 @@ Windows
 
 *NOTE: For Windows, you will need to [update the RubyGemsRootCA.pem](https://psadmin.io/2016/10/25/encrypt-psft_customizations-yaml-passwords), since the DPK ships an outdated version.*
 
-!SLIDE center subsection blue
+!SLIDE center subsection grey
 
-# DEMO
+# Demo
 
 
 
