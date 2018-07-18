@@ -78,13 +78,15 @@ Let's use a script to default the common values and so we reuse the command line
         Update Manager Options updated successfully.
 
 > The powershell script can be modified to fit your installation patterns, but its a handy tool to simplify CA deployments.
-~~~ENDSECTION~~~
 
-!SLIDE center subsection grey
+##  Create the HCMLNX database in CA
 
-# Demo
+1. From the command line, use the `createdb` option with `configureCA.ps1`.
 
-~~~SECTION:guide~~~
+        @@@powershellconsole
+        PS C:\vagrant\856-psadmin-delta-scripts\ca> .\configureCA.ps1 -action createdb -database HCMWIN -pt_version 8.56.05 -pi_version hr025
+        PS C:\vagrant\856-psadmin-delta-scripts\ca> .\configureCA.ps1 -action createdb -database HCMLNX -pt_version 8.56.05 -pi_version hr025
+        PS C:\vagrant\856-psadmin-delta-scripts\ca> .\configureCA.ps1 -action pumsource -database HCMWIN -pt_version 8.56.05 -pi_version hr025
 
 > *Estimated Time: 10 min*
 
@@ -111,6 +113,18 @@ In this exercise, you can choose to upload manually in Change Assistant or with 
 
 * PeopleTools Patches are fully headless
 * PeopleTools Upgrades can be controlled headlessly
+
+!SLIDE bullets
+
+# Headless PT Patch
+
+* Set the Download directory to `c:\PT8.56.08_Client_ORA\PTP`
+
+        @@@powershellconsole
+        PS> .\changeassistant.bat -MODE UM `
+                -ACTION PTPAPPLY `
+                -TGTENV HRDEV `
+                -UPD PTP856
 
 !SLIDE bullets
 
