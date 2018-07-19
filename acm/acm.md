@@ -1,6 +1,6 @@
 !SLIDE center subsection blue
 
-# ACM and Custom Facts
+# ACM
 
 !SLIDE bullets
 
@@ -61,6 +61,8 @@ The DPK makes this distinction clear because each section is separate.
 If the PeopleCode behind the plugin requires a domain to communicate, the plugin is a postboot plugin. E.g., configuring the Integration Broker or Search Framework requires a running web and app domain. But the Web Profile plugin is a preboot plugin because you need to configure the Web Profile before the web server starts.
 ~~~ENDSECTION~~~
 
+!SLIDE bullets
+
 # Running PTEM_CONFIG
 
 1. Online
@@ -91,6 +93,8 @@ The last option is to run the ACM via Deployment Packages. We'll cover that in t
 ~~~SECTION:notes~~~
 The `psft_configuration.yaml` file has valid ACM configurations, so you can use that as a reference when building out new plugins. The Process Scheduler Config ACM plugin is not a straight forward configuration, so that's a good place to start.
 ~~~ENDSECTION~~~
+
+!SLIDE bullets
 
 # ACM on the Command Line
 

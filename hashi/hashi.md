@@ -1,4 +1,4 @@
-!SLIDE center title blue
+!SLIDE center subsection blue
 
 # Vagabond, ps-terraform
 

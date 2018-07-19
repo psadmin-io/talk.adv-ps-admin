@@ -118,7 +118,9 @@ In this exercise, you can choose to upload manually in Change Assistant or with 
 
 # Headless PT Patch
 
-* Set the Download directory to `c:\PT8.56.08_Client_ORA\PTP`
+* Choose "PeopleTools Patch" when installing Client
+* Set the Download directory to `c:\PT8.56.08_Client_ORA\`
+* CA looks for the `\PTP` directory
 
         @@@powershellconsole
         PS> .\changeassistant.bat -MODE UM `
