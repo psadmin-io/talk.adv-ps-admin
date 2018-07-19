@@ -72,7 +72,7 @@ Windows
 
 # psa install - ruby
 
-* Install Ruby, RunyGems...or use Puppet's
+* Install Ruby, RubyGems...or use Puppet's
     * `export PATH=/opt/puppetlabs/puppet/bin:$PATH`
     * `$env:PATH += ";C:\Program Files\Puppet Labs\Puppet\sys\ruby\bin"`
 * `gem install psadmin-plus`
