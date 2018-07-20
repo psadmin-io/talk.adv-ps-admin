@@ -1,7 +1,4 @@
-# Advanced PeopleSoft Administration using the PeopleSoft Cloud Architecture
-
-## Oracle OpenWorld 2017
-### Session SUN1607
+# Advanced PeopleSoft Administration 
 
 To download and view the presentation locally:
 
