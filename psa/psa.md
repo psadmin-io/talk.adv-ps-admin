@@ -69,9 +69,9 @@
 * Install Ruby, RunyGems...or use Puppet's
     * `export PATH=/opt/puppetlabs/puppet/bin:$PATH`
     * `$env:PATH += ";C:\Program Files\Puppet Labs\Puppet\sys\ruby\bin"`
-* `gem install psadmin-plus`
+* `gem install psadmin_plus`
 
-*NOTE: For Windows, you will need to [update the RubyGemsRootCA.pem](https://psadmin.io/2016/10/25/encrypt-psft_customizations-yaml-passwords), since the DPK ships an outdated version.*
+*NOTE: For Windows, you will need to [update the RubyGemsRootCA.pem](https://gist.github.com/iversond/772e73257c4ca59a9e6137baa7288788), since the DPK ships an outdated version.*
 
 !SLIDE center subsection grey
 
