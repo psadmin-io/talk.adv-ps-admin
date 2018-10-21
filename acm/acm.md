@@ -33,16 +33,35 @@ ACM is like Puppet, for PeopleTools.
 
 !SLIDE bullets
 
+# ACM Templates
+
+Create logical groupings of ACM Plugins to run. Two examples:
+
+* Refresh Templates
+* Configuration Templates
+
+~~~SECTION:notes~~~
+ACM will run a template. A Template is a logical grouping of plugins. You can create your own templates and group them however you want. I've used two formats with good success. One is to group ACM plugins based on functionality. 
+
+1. We have an ACM template we run to configure an environment after a refresh to redeploy the search indexes. We use `DBNAME_refresh` for that name. It is only run after a refresh because it will do a few destructive actions. 
+
+The second format is to put all of the configuration that is non-destructive in a template name `DBNAME_config`. This can be run at anytime to "true up" configuration in the database. This will configure IB, URLs, etc.
+~~~ENDSECTION~~~
+
+
+!SLIDE bullets
+
 # ACM Plugins
 
 `PTEM_CONFIG` is the app engine behind Automated Configuration Management. `PTEM_CONFIG` runs ACM Plugins to configure the system.
 
-1. Plugins are App Packages
-    1. SQL
-    1. PeopleCode
-    1. Component Interfaces
+Plugins are App Packages
 
-!SLIDE bullets
+1. SQL
+1. PeopleCode
+1. Component Interfaces
+
+<!-- !SLIDE bullets
 
 # ACM Processing
 
@@ -59,7 +78,7 @@ Postboot plugins require a running domain (web and app servers).
 The DPK makes this distinction clear because each section is separate.
 
 If the PeopleCode behind the plugin requires a domain to communicate, the plugin is a postboot plugin. E.g., configuring the Integration Broker or Search Framework requires a running web and app domain. But the Web Profile plugin is a preboot plugin because you need to configure the Web Profile before the web server starts.
-~~~ENDSECTION~~~
+~~~ENDSECTION~~~ -->
 
 !SLIDE bullets
 
@@ -81,7 +100,7 @@ If you are looking to use the ACM for refresh processing, you can call the ACM v
 The last option is to run the ACM via Deployment Packages. We'll cover that in the DPK section. There is an important difference with the DPK and ACM. With the DPK, the ACM templates are defined in the `psft_customizations.yaml` file, not in the database. The DPK dynamically builds ACM templates from the `psft_customizations.yaml` file.
 ~~~ENDSECTION~~~
 
-!SLIDE bullets
+<!-- !SLIDE bullets
 
 # ACM Troubleshooting
 
@@ -92,7 +111,7 @@ The last option is to run the ACM via Deployment Packages. We'll cover that in t
 
 ~~~SECTION:notes~~~
 The `psft_configuration.yaml` file has valid ACM configurations, so you can use that as a reference when building out new plugins. The Process Scheduler Config ACM plugin is not a straight forward configuration, so that's a good place to start.
-~~~ENDSECTION~~~
+~~~ENDSECTION~~~ -->
 
 !SLIDE bullets
 
@@ -100,11 +119,14 @@ The `psft_configuration.yaml` file has valid ACM configurations, so you can use 
 
 * Call `psae` with `PTEM_CONFIG` as the Program ID
 * Use `psrunACM.bat` under `PS_HOME\utilities`
-* `$SERVER ORACLE $DATABASE $USER $PASS $TEMPLATE $OPTION`
+
+~~~SECTION:notes~~~
+<!-- * `$SERVER ORACLE $DATABASE $USER $PASS $TEMPLATE $OPTION`
 * OPTION is:
   1. EXEC - run the ACM Template
   1. IMP - Import Template
-  1. EXP - Export Template
+  1. EXP - Export Template -->
+~~~ENDSECTION~~~
 
 !SLIDE center subsection blue
 
@@ -130,7 +152,8 @@ The ACM runs for DPK do not use the database templates, so you have to enter the
 Also, if you have custom plugins, you need to load them into `PTEM_CONFIG` App Package. That value is hard-coded in the DPK code.
 ~~~ENDSECTION~~~
 
-!SLIDE bullets
+
+<!-- !SLIDE bullets
 
 # ACM and YAML
 
@@ -143,9 +166,9 @@ Define Configuration
 Define Order of Execution
 
 1. `component_preboot_setup_order:` Array
-1. `component_preboot_setup_order:` Array
+1. `component_preboot_setup_order:` Array -->
 
-!SLIDE bullets
+<!-- !SLIDE bullets
 
 # ACM and YAML
 
@@ -160,18 +183,18 @@ Define Order of Execution
         acm_plugin_list:
           PTWebProfileConfig:
             env.webprofilename: "%{hiera('pia_webprofile_name')}"
-            env.helpurl:        "http://www.oracle.com/pls/topic/lookup?id=%CONTEXT_ID%&ctx=%{hiera('help_uri')}"
+            env.helpurl:        "http://www.oracle.com/pls/topic/lookup?id=%CONTEXT_ID%&ctx=%{hiera('help_uri')}" -->
 
-!SLIDE bullets
+<!-- !SLIDE bullets
 
 # Controlling ACM Runs
 
 There are two variables that let you turn ACM on/off in YAML
 
 1. `run_preboot_config_setup: false`
-1. `run_postboot_config_setup: false`
+1. `run_postboot_config_setup: false` -->
 
-!SLIDE bullets
+<!-- !SLIDE bullets
 
 # Controlling ACM Runs
 
@@ -183,4 +206,5 @@ There are two variables that let you turn ACM on/off in YAML
 1. Override fact with Environment Variable:
 
         @@@powershellconsole
-        PS> $env:FACTER_acm_preboot="true"
+        PS> $env:FACTER_acm_preboot="true"  -->
+

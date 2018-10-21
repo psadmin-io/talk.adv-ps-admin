@@ -28,7 +28,7 @@ One installation strategy is to install a CA per-PI, or one CA per application, 
 All of the main Change Assistant functions are available from the command line. Again, very powerful for automation.
 ~~~ENDSECTION~~~
 
-!SLIDE bullets
+<!-- !SLIDE bullets
 
 # Command Line Support
 
@@ -36,7 +36,7 @@ All of the main Change Assistant functions are available from the command line. 
 1. `-INI c:\path\to\config.ini` to run commands from file
 
         @@@powershellconsole
-        .\changeassistant.bat /?
+        .\changeassistant.bat /? -->
 
 !SLIDE bullets
 
@@ -54,7 +54,7 @@ All of the main Change Assistant functions are available from the command line. 
 There are more options, but I feel these are the most valuable. These let you automate the PI provisioning process (coupled with Vagabond). And moving data between PI instances. This is important if you want to use the PUM features we'll talk about in the next section.
 ~~~ENDSECTION~~~
 
-!SLIDE center subsection grey
+<!-- !SLIDE center subsection grey
 
 # Demo
 
@@ -105,7 +105,7 @@ In this exercise, you can choose to upload manually in Change Assistant or with 
         PI_VERSION: hr025
         Begin to upload target infomation to PUM source:HCMWIN
         Uploading target information ...
-        Uploaded target infomation to PUM source successfully.
+        Uploaded target infomation to PUM source successfully. -->
 
 !SLIDE bullets incremental
 
