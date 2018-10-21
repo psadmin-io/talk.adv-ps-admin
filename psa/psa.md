@@ -43,48 +43,36 @@
 * `psa start`          - start all domains on server
 * `psa start web`      - start all web domains on server
 * `psa start web hdev` - start hdev web domain on server
+* `psa bounce`         - stop, cache, IPC, configure, start all domains
 
 !SLIDE bullets
 
 # psa versions
 
-* bash       - Linux
-* Powershell - Windows
+* ~~bash       - Linux~~
+* ~~Powershell - Windows~~
 * ruby       - Linux, Windows
 
 !SLIDE bullets
 
-# psa install - git
+# old versions
 
-Linux
-
-    @@@console
-    $ git clone https://github.com/psadmin-io/psadmin-plus.git
-    $ ./psadmin-plus/psamin-plus help
-
-Windows
-
-    @@@powershellconsole
-    PS > git clone https://github.com/psadmin-io/psadmin-plus.git
-    PS > ./psadmin-plus/PSAdminPlus.ps1 help
+* See old branches
+    * bash
+    * powershell
+    * old multiple domain support
 
 !SLIDE bullets
 
-# psa install - ruby
-
-* Install Ruby, RubyGems...or use Puppet's
+# psa install
+# TODO - test this
+* Install Ruby, RunyGems...or use Puppet's
     * `export PATH=/opt/puppetlabs/puppet/bin:$PATH`
     * `$env:PATH += ";C:\Program Files\Puppet Labs\Puppet\sys\ruby\bin"`
-* `gem install psadmin_plus`
+* `gem install psadmin-plus`
 
 *NOTE: For Windows, you will need to [update the RubyGemsRootCA.pem](https://psadmin.io/2016/10/25/encrypt-psft_customizations-yaml-passwords), since the DPK ships an outdated version.*
 
 !SLIDE center subsection grey
 
 # Demo
-
-
-
-
-
-
