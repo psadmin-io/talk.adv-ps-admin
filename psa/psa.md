@@ -2,7 +2,7 @@
 
 # psadmin-plus
 
-!SLIDE bullets 
+!SLIDE bullets
 
 # psadmin-plus
 
@@ -17,7 +17,7 @@
     @@@console
     $ psa help
     Usage: psa [command] <type> <domain>
-    
+
     Commands:
         help           display this help message
         list           list domains
@@ -25,7 +25,7 @@
         status         status of the domain
         start          pooladd, if enabled, then start the domain
         stop           poolrm, if enabled, stop the domain
-        ...       
+        ...
     Types:
         app            act on application domains
         prcs           act on process scheduler domains
@@ -65,7 +65,7 @@
 !SLIDE bullets
 
 # psa install
-# TODO - test this
+
 * Install Ruby, RunyGems...or use Puppet's
     * `export PATH=/opt/puppetlabs/puppet/bin:$PATH`
     * `$env:PATH += ";C:\Program Files\Puppet Labs\Puppet\sys\ruby\bin"`

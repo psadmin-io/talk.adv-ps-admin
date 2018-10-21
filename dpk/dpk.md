@@ -14,8 +14,6 @@
 
 !SLIDE bullets
 
-!SLIDE bullets
-
 # Tools used
 
 1. Puppet
@@ -27,7 +25,7 @@
 
 # Oracle's Usage
 
-1. PUM Deployment
+1. Building PeopleSoft Images
 1. PeopleTools installation (Only Option 8.57+)
 1. PeopleSoft Cloud Manager
 
@@ -35,7 +33,7 @@
 
 # 8.57 Notes
 
-1. New Puppet version XX-TODO
+1. New Puppet version 5
 1. Root requirements moved to Python script
 1. Bug fixes
 1. No major structural changes
@@ -54,7 +52,6 @@
 # Custom Usage
 
 1. Deploy your own environment configurations
-1. Signon page
+1. Custom Signon page
 1. SSL Certificates
 1. Custom Java Libraries
-1. TODO - some ACM example?
