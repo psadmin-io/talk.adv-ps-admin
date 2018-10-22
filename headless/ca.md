@@ -2,19 +2,17 @@
 
 # Headless Change Assistant
 
-!SLIDE bullets
+!SLIDE bullets incremental
 
 # Change Assistant
 
-1. Apply Change Packages
 1. Create Change Package .zip Files
-1. Manage PUM Environments
-1. Manage Target Environments
+1. Manage Environments
+1. Apply Change Packages
 1. PeopleTools DB Upgrades/Patches
 1. Export/Import CA Databases
 1. Upload Customizations
-
-**From the command line!**
+1. **From the command line!**
 
 ~~~SECTION:notes~~~
 Change Assistant will do much more, but these are the main features when working with Selective Adoption.
@@ -109,10 +107,11 @@ In this exercise, you can choose to upload manually in Change Assistant or with 
 
 !SLIDE bullets incremental
 
-# Headless PT Patches and Upgrades
+# PT Patches and Upgrades
 
 * PeopleTools Patches are fully headless
 * PeopleTools Upgrades can be controlled headlessly
+* 8.57 makes headless PT Upgrades easier
 
 !SLIDE bullets
 
@@ -148,14 +147,15 @@ In this exercise, you can choose to upload manually in Change Assistant or with 
     @@@powershell
     Do {
         .\changeassistant.bat -MODE UM -ACTION PTUAPPLY  `
-          -TGTENV $DATABASE -UPD PTU856 -OUT c:\temp\$DATABASE-ptu856-$STEP.log `
+          -TGTENV $DATABASE -UPD PTU856 `
+          -OUT c:\temp\$DATABASE-ptu856-$STEP.log `
           -WARNINGSOK Y -EXONERR Y -RESETJOB N `
           -RESUMEJOB COMPLETECONTINUE | select-string "Running"
         
         switch ($LASTEXITCODE) {
             0 { $status = "done"; break }
-            1 { Write-Output    "Open Change Assistant to review the error."; Exit 1 }
-            2 { Write-Host      "Manual Stop Encountered"; Exit 2 }
+            1 { Write-Output    "Open CA "; Exit 1 }
+            2 { Write-Host      "Stop Encountered"; Exit 2 }
             3 { Exit 3 }
             Default { Exit 4 }
         }

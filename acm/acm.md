@@ -128,7 +128,7 @@ The `psft_configuration.yaml` file has valid ACM configurations, so you can use 
   1. EXP - Export Template -->
 ~~~ENDSECTION~~~
 
-!SLIDE center subsection blue
+!SLIDE center subsection grey
 
 # Demo
 

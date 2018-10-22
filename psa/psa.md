@@ -49,15 +49,8 @@
 
 # psa versions
 
-* ~~bash       - Linux~~
-* ~~Powershell - Windows~~
-* ruby       - Linux, Windows
-
-!SLIDE bullets
-
-# old versions
-
-* See old branches
+* ruby - Linux, Windows
+* old branches
     * bash
     * powershell
     * old multiple domain support
@@ -66,7 +59,7 @@
 
 # psa install
 
-* Install Ruby, RunyGems...or use Puppet's
+* Install Ruby, RubyGems...or use Puppet's
     * `export PATH=/opt/puppetlabs/puppet/bin:$PATH`
     * `$env:PATH += ";C:\Program Files\Puppet Labs\Puppet\sys\ruby\bin"`
 * `gem install psadmin_plus`
