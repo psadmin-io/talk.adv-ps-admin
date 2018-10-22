@@ -136,14 +136,10 @@ code {
   border-spacing: 2px, 2px, 2px, 2px;
   padding-bottom: 2px;
   font-family: 'Inconsolata', monaco, monospace;
-  font-size: 1.0em;
+  font-size: .85em;
   color: #595959;
   font-style: normal;
   background: #fcfcfc;
-}
-
-.hljs {
-  font-size: 1.0em;
 }
 
 .content:not(.cover) h1:not(.section_title) {

@@ -11,7 +11,7 @@
   1. Elasticsearch and Search Framework
 * Coaching
 * github.com/psadmin-io
-* psadmin.conf
+* **psadmin.conf - May 6-8, 2019**
 
 
 !SLIDE center subsection blue

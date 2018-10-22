@@ -14,20 +14,21 @@
 
 !SLIDE bullets
 
-# Tools used
-
-1. Puppet
-1. Hiera
-1. Python
-1. ACM
-
-!SLIDE bullets
-
 # Oracle's Usage
 
 1. Building PeopleSoft Images
 1. PeopleTools installation (Only Option 8.57+)
 1. PeopleSoft Cloud Manager
+
+!SLIDE bullets
+
+# Tools used
+
+1. Puppet
+1. Hiera
+1. Facter
+1. Python
+1. ACM
 
 !SLIDE bullets
 
@@ -37,6 +38,16 @@
 1. Root requirements moved to Python script
 1. Bug fixes
 1. No major structural changes
+
+!SLIDE bullets
+
+# DPK Advantages
+
+1. Consistent Configuration
+1. Self Documenting
+1. Faster Patching and Deployments
+1. Version Control
+1. Be "Cloud Ready"
 
 !SLIDE bullets
 
