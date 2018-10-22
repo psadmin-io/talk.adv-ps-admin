@@ -9,6 +9,7 @@
   1. DPK
   1. PUM and Change Lifecycle
   1. Elasticsearch and Search Framework
+* Coaching
 * github.com/psadmin-io
 * psadmin.conf
 
