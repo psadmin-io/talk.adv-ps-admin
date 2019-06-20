@@ -2,11 +2,9 @@
 
 # Agenda
 
-1. psadmin-plus
-1. ACM
-1. Headless Change Assistant
-1. Vagabond and ps-terraform
+1. ElasticSearch
+1. Unified Navigation 
 
 ~~~SECTION:notes~~~
-Survey the audience for DPK usage
+
 ~~~ENDSECTION~~~

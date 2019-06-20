@@ -12,10 +12,10 @@
     "intro/intro.md",
     "intro/about.md",
     "intro/agenda.md",
-    "psa/psa.md",
-    "acm/acm.md",
-    "headless/ca.md",
-    "hashi/hashi.md",
+    "es/01-info.md",
+    "es/02-tips.md",
+    "nav/01-info.md",
+    "nav/02-tips.md",
     "intro/closing.md"
   ]
 }
