@@ -14,8 +14,10 @@
     "intro/agenda.md",
     "es/01-info.md",
     "es/02-tips.md",
-    "nav/01-info.md",
-    "nav/02-tips.md",
+    "cluster/clustering.md",
+    "cluster/backbutton.md",
+    "cluster/approvals.md",
+    "cluster/userprefs.md",
     "intro/closing.md"
   ]
 }
