@@ -1,186 +1,156 @@
-!SLIDE center subsection blue
+!SLIDE bullets incremental
 
 # ACM
 
-!SLIDE bullets
-
-# ACM Overview
-
-Automated Configuration Management is an Application Engine which configures PeopleTools in your database. ACM will read configuration defined in tables and apply that configuration to a database.
-
-1. Configure Integration Broker
-1. Deploy Search Indexes
-1. Update Web Profile
-
-~~~SECTION:notes~~~
-ACM is like Puppet, for PeopleTools.
-~~~ENDSECTION~~~
+* Automated Configuration Management
+* Database Configuration
+* Leverages SQL **and** PeopleCode
+* Search Framework Plugins
+* Configure **and** Deploy Search Indexes
 
 !SLIDE bullets
 
-# ACM Scope
+# ACM Demo
 
-1. PeopleTools
-    1. Integration Broker
-    1. Search Framework
-    1. Process Scheduler
-    1. More!
-1. Application
-    1. AWE Configuration
-    1. URLs
-    1. ePro
-    1. More!
+1. Configure ES Cluster
+1. Clear previous ES Deployment Data
+1. Redeploy ALL indexes
 
-!SLIDE bullets
+!SLIDE supplemental guide
 
-# ACM Plugins
+# ACM and Search Framework Demo
 
-`PTEM_CONFIG` is the app engine behind Automated Configuration Management. `PTEM_CONFIG` runs ACM Plugins to configure the system.
+1. Use the `SEARCH_TEMPLATE` ACM plugin
+1. Configure a 3 node cluster (pre-configured)
+1. Remove previously deployed PTSF data
 
-1. Plugins are App Packages
-    1. SQL
-    1. PeopleCode
-    1. Component Interfaces
+    This removes it from the PSTF* tables, but not Elasticsearch
 
-!SLIDE bullets
+1. Deploy ALL indexes and start a full build for each
+1. Show the run controls for the builds (full and incr)
 
-# ACM Processing
+!SLIDE bullets incremental
 
-There are two types of ACM Plugins: 
+# Understanding Callback Security
 
-1. Preboot Plugins
-1. Postboot Plugins
-
-Preboot plugins can be run at anytime and do not require a running domain.
-
-Postboot plugins require a running domain (web and app servers).
-
-~~~SECTION:notes~~~
-The DPK makes this distinction clear because each section is separate.
-
-If the PeopleCode behind the plugin requires a domain to communicate, the plugin is a postboot plugin. E.g., configuring the Integration Broker or Search Framework requires a running web and app domain. But the Web Profile plugin is a preboot plugin because you need to configure the Web Profile before the web server starts.
-~~~ENDSECTION~~~
+* Elasticsearch query finds all rows
+* Need to filter data based on PeopleSoft security
+* PeopleSoft provides a filter attribute
+* Elasticsearch calls back to PS for filter attribute
+* Each document in Elasticsearch has filter values
+* Elasticsearch filters documents before returning results
 
 !SLIDE bullets
 
-# Running PTEM_CONFIG
+# Filter Values
 
-1. Online
-  1. Interactive
-  1. Scheduled
-1. Shell Script
-1. Deployment Packages
+* `ptportalregistry`
 
-~~~SECTION:notes~~~
-There are two options to run the ACM based on what you want to accomplish. 
-
-The online method is the best way to start and test ACM configurations. If you are running a longer ACM template, you can use the Scheduled option to run the process asynchronously. The default is Interactive, but you cannot interact with your session while the ACM template is processing.
-
-If you are looking to use the ACM for refresh processing, you can call the ACM via shell scripts. Under `PS_HOME\utility`, the `psrunACM` scripts will show you how to call the ACM app engine. The app engine looks for a properties file under `PS_FILEDIR`, but you can override the location with the environment variable `PTEM_PROP`.
-
-The last option is to run the ACM via Deployment Packages. We'll cover that in the DPK section. There is an important difference with the DPK and ACM. With the DPK, the ACM templates are defined in the `psft_customizations.yaml` file, not in the database. The DPK dynamically builds ACM templates from the `psft_customizations.yaml` file.
-~~~ENDSECTION~~~
+        @@@json
+        "PORTAL_SECTYPE_ORCL_ES_ACL" : [
+          "1:PTDMO",
+          "P:PTPT1200",
+          "S:Admin"
+        ]
 
 !SLIDE bullets
 
-# ACM Troubleshooting
+# Callback URL
 
-1. `PTACM_DEBUG="true"` Environment Variable
-1. Use AE traces to capture the PeopleCode Execution
-1. Verify Component Interface security
-1. Reference the `psft_configuration.yaml` file in the DPK
-
-~~~SECTION:notes~~~
-The `psft_configuration.yaml` file has valid ACM configurations, so you can use that as a reference when building out new plugins. The Process Scheduler Config ACM plugin is not a straight forward configuration, so that's a good place to start.
-~~~ENDSECTION~~~
+* `IB RESTListener URL`/`getsecurityvalues.v1`
+  * `?type=`Search Definition
+  * `?user=`User ID
+  * `?attribute=`Filter Attribute
 
 !SLIDE bullets
 
-# ACM on the Command Line
+# Callback Security Demo
 
-* Call `psae` with `PTEM_CONFIG` as the Program ID
-* Use `psrunACM.bat` under `PS_HOME\utilities`
-* `$SERVER ORACLE $DATABASE $USER $PASS $TEMPLATE $OPTION`
-* OPTION is:
-  1. EXEC - run the ACM Template
-  1. IMP - Import Template
-  1. EXP - Export Template
+1. View documents in Elasticsearch
+1. Test Callback Response
 
-!SLIDE center subsection blue
+!SLIDE supplemental guide
 
-# Demo
+# Callback Security Demo
 
-~~~SECTION:notes~~~
-Create the _REFRESH template (clean up Search Deployment)
-Run the `c:\vagrant\856-psadmin-delta-scripts\acm\refresh_db.sql` script to show a sample refresh processing for Search
-~~~ENDSECTION~~~
+1. View documents raw in Elasticsearch
 
-!SLIDE bullets
+        @@@bash
+        curl -u esadmin:Passw0rd! http://localhost:9200/ptportalregistry_psftdb/_search?pretty=true -H 'Content-Type: application/json; encoding="UTF-8"' -H 'SearchUser: PS' | jq
 
-# ACM and DPK
+1. View callback filter
 
-* ACM is fully supported with DPK
-* Uses configuration in YAML files
-* Dynamically generates ACM template files
-* Does not support custom ACM Plugs App Packages
+        @@@bash
+        curl -u PS:PS http://ec2-3-82-138-233.compute-1.amazonaws.com:8000/PSIGW/RESTListeningConnector/PSFT_HR/getsecurityvalues.v1/?type=ptportalregistry_psftdb?user=PS?attribute=PORTAL_SECTYPE_ORCL_ES_ACL | jq
 
-~~~SECTION:notes~~~
-The ACM runs for DPK do not use the database templates, so you have to enter the ACM data in `psft_customizations.yaml`.
+!SLIDE bullets incremental
 
-Also, if you have custom plugins, you need to load them into `PTEM_CONFIG` App Package. That value is hard-coded in the DPK code.
-~~~ENDSECTION~~~
+# Cached Security
+
+* Callback process is expensive
+* Cache user security in Elasticsearch
+* Default is 120 minutes
+* Configurable in Search Options
 
 !SLIDE bullets
 
-# ACM and YAML
+# Cached Security Demo
 
-Define Configuration
+1. Query the `orcl_es_acl` index
 
-1. `component_preboot_setup_list:` Hash
-1. `component_postboot_setup_list:` Hash
+!SLIDE supplemental guide
 
+# Cached Security Demo
 
-Define Order of Execution
+1. Use `curl` to query the `orcl_es_acl` index
 
-1. `component_preboot_setup_order:` Array
-1. `component_preboot_setup_order:` Array
+        @@@bash
+        curl -u esadmin:Passw0rd! http://ec2-34-239-103-132.compute-1.amazonaws.com:9200/orcl_es_acl/_search?pretty=true&size=50
 
-!SLIDE bullets
+!SLIDE bullets incremental
 
-# ACM and YAML
+# Full Build Tuning
 
-    @@@yaml
-    component_preboot_setup_list:
-      web_profile:
-        run_control_id:    webprofile
-        os_user:           "%{hiera('domain_user')}"
-
-        db_settings: ...
-
-        acm_plugin_list:
-          PTWebProfileConfig:
-            env.webprofilename: "%{hiera('pia_webprofile_name')}"
-            env.helpurl:        "http://www.oracle.com/pls/topic/lookup?id=%CONTEXT_ID%&ctx=%{hiera('help_uri')}"
+* Connected Query SQL tuning
+* Use Direct Transfer
+* Elasticsearch Replicas
+* Elasticsearch Refresh Interval
 
 !SLIDE bullets
 
-# Controlling ACM Runs
+# Full Build Tuning Demo
 
-There are two variables that let you turn ACM on/off in YAML
+1. Verify Direct Transfer is enabled
+1. Change Refresh Interval setting
+1. Reduce Replicas
 
-1. `run_preboot_config_setup: false`
-1. `run_postboot_config_setup: false`
+!SLIDE supplemental guide
 
-!SLIDE bullets
+# Full Build Tuning Demo
 
-# Controlling ACM Runs
+1. Under PT > Search Framework > Admin > Search Options
+1. Ensure DirectTransfer is set to `Y`
+1. In Cerebro, adjust the `replicas` and `refresh interval` settings for an index
+1. In Kibana, use the Dev Tools for the same settings
 
-1. Use Custom Facts to control ACM Runs
+        @@@json
+        PUT /pt_portalregistry_psftdb/_settings
+        {
+            "index" : {
+                "number_of_replicas" : 0,
+                "refresh_interval" : "-1"
+            }
+        }
 
-        @@@yaml
-        run_preboot_config_setup: "%{::acm_preboot}"
+1. After the Full Build
 
-1. Override fact with Environment Variable:
+        @@@json
+        PUT /pt_portalregistry_psftdb/_settings
+        {
+            "index" : {
+                "number_of_replicas" : 1,
+                "refresh_interval" : "30s"
+            }
+        }
 
-        @@@powershellconsole
-        PS> $env:FACTER_acm_preboot="true"
+> [flush and refresh operations in Elasticsearch](https://qbox.io/blog/refresh-flush-operations-elasticsearch-guide)
