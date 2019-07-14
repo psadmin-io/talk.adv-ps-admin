@@ -1,3 +1,7 @@
+!SLIDE center subsection grey
+
+# Demo
+
 !SLIDE bullets
 
 # Demo
