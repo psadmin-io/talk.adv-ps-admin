@@ -12,12 +12,17 @@
     "intro/intro.md",
     "intro/about.md",
     "intro/agenda.md",
-    "es/01-info.md",
-    "es/02-tips.md",
+    "es/01-intro.md",
+    "es/02-slides.md",
     "cluster/clustering.md",
     "cluster/backbutton.md",
     "cluster/approvals.md",
     "cluster/userprefs.md",
+    "dpk/01-intro.md",
+    "dpk/02-slides.md",
+    "shell/01-intro.md",
+    "shell/02-slides.md",
+    "shell/03-demo.md",
     "intro/closing.md"
   ]
 }

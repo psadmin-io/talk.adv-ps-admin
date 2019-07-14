@@ -76,12 +76,12 @@
 1. View documents raw in Elasticsearch
 
         @@@bash
-        curl -u esadmin:Passw0rd! http://localhost:9200/ptportalregistry_psftdb/_search?pretty=true -H 'Content-Type: application/json; encoding="UTF-8"' -H 'SearchUser: PS' | jq
+        curl -u esadmin:Passw0rd http://hr030-lnxft-1.midtier.psft.oraclevcn.com:9200/ptportalregistry_hrpum/_search?pretty=true -H 'Content-Type: application/json; encoding="UTF-8"' -H 'SearchUser: PS' | jq
 
 1. View callback filter
 
         @@@bash
-        curl -u PS:PS http://ec2-3-82-138-233.compute-1.amazonaws.com:8000/PSIGW/RESTListeningConnector/PSFT_HR/getsecurityvalues.v1/?type=ptportalregistry_psftdb?user=PS?attribute=PORTAL_SECTYPE_ORCL_ES_ACL | jq
+        curl -u PS:PS http://hr030-lnxft-1.midtier.psft.oraclevcn.com:8000/PSIGW/RESTListeningConnector/PSFT_HR/getsecurityvalues.v1/?type=ptportalregistry_hrpum?user=PS?attribute=PORTAL_SECTYPE_ORCL_ES_ACL | jq
 
 !SLIDE bullets incremental
 
@@ -105,7 +105,7 @@
 1. Use `curl` to query the `orcl_es_acl` index
 
         @@@bash
-        curl -u esadmin:Passw0rd! http://ec2-34-239-103-132.compute-1.amazonaws.com:9200/orcl_es_acl/_search?pretty=true&size=50
+        curl -u esadmin:Passw0rd http://hr030-lnxft-1.midtier.psft.oraclevcn.com:9200/orcl_es_acl/_search?pretty=true&size=50
 
 !SLIDE bullets incremental
 
@@ -134,7 +134,7 @@
 1. In Kibana, use the Dev Tools for the same settings
 
         @@@json
-        PUT /pt_portalregistry_psftdb/_settings
+        PUT /ptportalregistry_hrpum/_settings
         {
             "index" : {
                 "number_of_replicas" : 0,
@@ -145,7 +145,7 @@
 1. After the Full Build
 
         @@@json
-        PUT /pt_portalregistry_psftdb/_settings
+        PUT /ptportalregistry_hrpum/_settings
         {
             "index" : {
                 "number_of_replicas" : 1,

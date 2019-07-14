@@ -1,0 +1,434 @@
+---
+
+ensure:                 present
+env_type:               midtier
+domain_type:            all
+
+run_preboot_config_setup:  false
+#run_postboot_config_setup: false
+
+setup_samba:     false
+setup_sysctl:    true
+setup_services:  true
+
+peoplesoft_base:        "/u01/app/psoft"
+ps_config_home:         "%{hiera('peoplesoft_base')}/cfg"
+ps_cust_home_base:      "%{hiera('peoplesoft_base')}/cust"
+ps_app_home_base:       "%{hiera('peoplesoft_base')}/app"
+ps_home_location:       "%{hiera('pt_location')}/ps_home%{hiera('tools_version')}"
+oracle_client_location: "%{hiera('pt_location')}/oracle-client"
+jdk_location:           "%{hiera('pt_location')}/jdk"
+weblogic_location:      "%{hiera('pt_location')}/weblogic"
+tuxedo_location:        "%{hiera('pt_location')}/tuxedo"
+unicode_db:             false
+
+# cobol
+setup_cobol: false
+cobol:
+  location:              "%{hiera('pt_location')}/cobol/svrexp.5.1.WP11"
+  license_serial_number:  "PEOPLESOFT-xxxxx"
+  license_key:            "xxx xxx xxx xxx xxx"
+
+db_server:              "10.x.x.x"
+db_port:                "1521"
+
+appserv_user:           "PS"
+domain_user:            "%{hiera('psft_runtime_user_name')}"
+connect_id:             "people"
+pia_gateway_user:       "administrator"
+weblogic_admin:         "system"
+
+appserv_user_pwd:       "<pass>"
+ptwebsrv_user_pwd:      "<pass>"
+domain_conn_pwd:        "<pass>"
+connect_pwd:            "<pass>"
+pia_gateway_pass:       "<pass>"
+weblogic_pass:          "<pass>"
+
+smtp_server:            "smtp.psadmin.io"
+smtp_port:              25
+smtp_sender:            "psoft@psadmin.io"
+
+appserver_template:     "developer"
+pia_auth_token_domain:  ".psadmin.io" #TODO
+pia_webprofile_name:    "DEV"
+report_repository_dir:  "/u01/app/psreports"
+
+fn_cust:                "%{hiera('ps_cust_home_base')}/fndev"
+fn_app:                 "%{hiera('ps_app_home_base')}/fn031"
+fn_pia_psserver_list:   "dev.psadmin.io:12300"
+
+hr_cust:                "%{hiera('ps_cust_home_base')}/hrdev"
+hr_app:                 "%{hiera('ps_app_home_base')}/fn030"
+hr_pia_psserver_list:   "dev.psadmin.io:11300"
+
+# COBOL home vars, only HR uses them
+ps_app_home:
+  location:             "%{hiera('hr_app')}"
+ps_cust_home:
+  location:             "%{hiera('hr_cust')}"
+
+tns_dir:                "%{hiera('db_location')}"
+tns_admin_list:
+  FNDEV:
+    db_host:            "%{hiera('db_server')}"
+    db_port:            "%{hiera('db_port')}"
+    db_protocol:        "TCP"
+    db_is_rac:          "false"
+    db_service_name:    "fndev"
+
+  HRDEV:
+    db_host:            "%{hiera('db_server')}"
+    db_port:            "%{hiera('db_port')}"
+    db_protocol:        "TCP"
+    db_is_rac:          "false"
+    db_service_name:    "hrdev"
+
+appserver_domain_list:
+  "fndev":
+    os_user:            "%{hiera('domain_user')}"
+    ps_cfg_home_dir:    "%{hiera('ps_config_home')}"
+    ps_cust_home_dir:   "%{hiera('fn_cust')}"
+    ps_app_home_dir:    "%{hiera('fn_app')}"
+    template_type:      "%{hiera('appserver_template')}"
+
+    db_settings:
+      db_name:          "FNDEV"
+      db_type:          "%{hiera('db_platform')}"
+      db_opr_id:        "%{hiera('appserv_user')}"
+      db_opr_pwd:       "%{hiera('appserv_user_pwd')}"
+      db_connect_id:    "%{hiera('connect_id')}"
+      db_connect_pwd:   "%{hiera('connect_pwd')}"
+
+    config_settings:
+      Domain Settings/Domain ID:    "fndev"
+      PSAPPSRV/Min Instances:       2
+      PSAPPSRV/Max Instances:       3
+      PSAPPSRV/Max Fetch Size:      2000 # TODO
+      PSAPPSRV/Recycle Count:       5000 # TODO
+      PSQRYSRV/Min Instances:       2
+      PSQRYSRV/Max Instances:       2
+      PSQRYSRV/Max Fetch Size:      2000 # TODO
+      PSQRYSRV/Recycle Count:       100
+      Security/DomainConnectionPwd: "%{hiera('domain_conn_pwd')}"
+      JOLT Listener/Port:           "12300"
+      JOLT Listener/Address:        "%PS_MACH%"
+      JOLT Listener/Min Handlers:   2
+      JOLT Listener/Max Handlers:   3
+      Workstation Listener/Port:    "22300"
+      Domain Settings/Allow Dynamic Changes:  Y
+      SMTP Settings/SMTPServer:     "%{hiera('smtp_server')}"
+      SMTP Settings/SMTPPort:       "%{hiera('smtp_port')}"
+      SMTP Settings/SMTPSourceMachine: '%PS_MACH%'
+      SMTP Settings/SMTPSender:     "%{hiera('smtp_sender')}"
+      PSQRYSRV/JavaVM Options:      '-Dxdo.ConfigFile=%PS_CFG_HOME%/appserv/xdo.cfg -Xms32m -Xmx128m -Ddeployment.security.TLSv1.1=true -Ddeployment.security.TLSv1.2=true'
+      PSTOOLS/JavaVM Options:       '-Dxdo.ConfigFile=%PS_CFG_HOME%/appserv/xdo.cfg -Xms32m -Xmx128m -Ddeployment.security.TLSv1.1=true -Ddeployment.security.TLSv1.2=true'
+      PSMONITORSRV/JavaVM Options:  '-Dxdo.ConfigFile=%PS_CFG_HOME%/appserv/xdo.cfg -Xms32m -Xmx128m -Ddeployment.security.TLSv1.1=true -Ddeployment.security.TLSv1.2=true'
+      PSTOOLS/Enable Remote Administration: 0
+      PSTOOLS/EnablePPM Agent:       0
+      LDAP/Dynamic Update of Certificates: 'Y'
+
+    feature_settings:
+      PUBSUB:           "Yes"
+      QUICKSRV:         "No"
+      QUERYSRV:         "No"
+      JOLT:             "Yes"
+      JRAD:             "No"
+      WSL:              "No"
+      DBGSRV:           "No"
+      RENSRV:           "Yes"
+      MCF:              "No"
+      PPM:              "No"
+      PSPPMSRV:         "No"
+      ANALYTICSRV:      "No"
+      SERVER_EVENTS:    "No"
+      DOMAIN_GW:        "No"
+
+    env_settings:
+      PS_HOME:          "%{hiera('ps_home_location')}"
+      PS_APP_HOME:      "%{hiera('fn_app')}"
+      PS_CUST_HOME:     "%{hiera('fn_cust')}"
+      PS_CFG_HOME:      "%{hiera('ps_config_home')}"
+      PS_FILEDIR:       "%{hiera('fn_cust')}/files"
+      TEMP:             "%{hiera('fn_cust')}/temp"
+      TMP:              "%{hiera('fn_cust')}/temp"
+
+  "hrdev":
+    os_user:            "%{hiera('domain_user')}"
+    ps_cfg_home_dir:    "%{hiera('ps_config_home')}"
+    ps_cust_home_dir:   "%{hiera('hr_cust')}"
+    ps_app_home_dir:    "%{hiera('hr_app')}"
+    template_type:      "%{hiera('appserver_template')}"
+
+    db_settings:
+      db_name:          "HRDEV"
+      db_type:          "%{hiera('db_platform')}"
+      db_opr_id:        "%{hiera('appserv_user')}"
+      db_opr_pwd:       "%{hiera('appserv_user_pwd')}"
+      db_connect_id:    "%{hiera('connect_id')}"
+      db_connect_pwd:   "%{hiera('connect_pwd')}"
+
+    config_settings:
+      Domain Settings/Domain ID:    "hrdev"
+      PSAPPSRV/Min Instances:       2
+      PSAPPSRV/Max Instances:       3
+      PSAPPSRV/Max Fetch Size:      2000 #TODO
+      PSAPPSRV/Recycle Count:       5000
+      PSQRYSRV/Min Instances:       2
+      PSQRYSRV/Max Instances:       2
+      PSQRYSRV/Max Fetch Size:      2000 #TODO
+      PSQRYSRV/Recycle Count:       100
+      Security/DomainConnectionPwd: "%{hiera('domain_conn_pwd')}"
+      JOLT Listener/Port:           "11300"
+      JOLT Listener/Address:        "%PS_MACH%"
+      JOLT Listener/Min Handlers:   2
+      JOLT Listener/Max Handlers:   3
+      Workstation Listener/Port:    "21300"
+      Domain Settings/Allow Dynamic Changes:  Y
+      SMTP Settings/SMTPServer:     "%{hiera('smtp_server')}"
+      SMTP Settings/SMTPPort:       "%{hiera('smtp_port')}"
+      SMTP Settings/SMTPSourceMachine: '%PS_MACH%'
+      SMTP Settings/SMTPSender:     "%{hiera('smtp_sender')}"
+      PSQRYSRV/JavaVM Options:      '-Dxdo.ConfigFile=%PS_CFG_HOME%/appserv/xdo.cfg -Xms32m -Xmx128m -Ddeployment.security.TLSv1.1=true -Ddeployment.security.TLSv1.2=true'
+      PSTOOLS/JavaVM Options:       '-Dxdo.ConfigFile=%PS_CFG_HOME%/appserv/xdo.cfg -Xms32m -Xmx128m -Ddeployment.security.TLSv1.1=true -Ddeployment.security.TLSv1.2=true'
+      PSMONITORSRV/JavaVM Options:  '-Dxdo.ConfigFile=%PS_CFG_HOME%/appserv/xdo.cfg -Xms32m -Xmx128m -Ddeployment.security.TLSv1.1=true -Ddeployment.security.TLSv1.2=true'
+      PSTOOLS/Enable Remote Administration: 0
+      PSTOOLS/EnablePPM Agent:       0
+      LDAP/Dynamic Update of Certificates: 'Y'
+
+    feature_settings:
+      PUBSUB:           "Yes"
+      QUICKSRV:         "No"
+      QUERYSRV:         "Yes"
+      JOLT:             "Yes"
+      JRAD:             "No"
+      WSL:              "No"
+      DBGSRV:           "No"
+      RENSRV:           "No"
+      MCF:              "No"
+      PPM:              "No"
+      PSPPMSRV:         "No"
+      ANALYTICSRV:      "No"
+      SERVER_EVENTS:    "No"
+      DOMAIN_GW:        "No"
+
+    env_settings:
+      PS_HOME:          "%{hiera('ps_home_location')}"
+      PS_APP_HOME:      "%{hiera('hr_app')}"
+      PS_CUST_HOME:     "%{hiera('hr_cust')}"
+      PS_CFG_HOME:      "%{hiera('ps_config_home')}"
+      PS_FILEDIR:       "%{hiera('hr_cust')}/files"
+      TEMP:             "%{hiera('hr_cust')}/temp"
+      TMP:              "%{hiera('hr_cust')}/temp"
+
+prcs_domain_list:
+  "fndev":
+    os_user:         "%{hiera('domain_user')}"
+    ps_cfg_home_dir: "%{hiera('ps_config_home')}"
+
+    db_settings:
+      db_name:        "FNDEV"
+      db_type:        "%{hiera('db_platform')}"
+      db_opr_id:      "%{hiera('appserv_user')}"
+      db_opr_pwd:     "%{hiera('appserv_user_pwd')}"
+      db_connect_id:  "%{hiera('connect_id')}"
+      db_connect_pwd: "%{hiera('connect_pwd')}"
+
+    config_settings:
+      Process Scheduler/PrcsServerName: "PSUNX"
+      Security/DomainConnectionPwd:     "%{hiera('domain_conn_pwd')}"
+
+      Domain Settings/Allow Dynamic Changes:  Y
+      SMTP Settings/SMTPServer:     "%{hiera('smtp_server')}"
+      SMTP Settings/SMTPPort:       "%{hiera('smtp_port')}"
+      SMTP Settings/SMTPSourceMachine: '%PS_MACH%'
+      SMTP Settings/SMTPSender:     "%{hiera('smtp_sender')}"
+      PSTOOLS/JavaVM Options:       '-Dxdo.ConfigFile=%PS_CFG_HOME%/appserv/xdo.cfg -Xms32m -Xmx128m' # TODO
+      PSMONITORSRV/JavaVM Options:  '-Dxdo.ConfigFile=%PS_CFG_HOME%/appserv/xdo.cfg -Xms32m -Xmx128m' # TODO
+      SQR/PSSQR:                    '%PS_CUST_HOME%/sqr:%PS_APP_HOME%/sqr:%PS_HOME%/sqr'
+
+    feature_settings:
+      MSTRSRV:      "Yes"
+      APPENG:       "No"
+
+    env_settings:
+      PS_HOME:          "%{hiera('ps_home_location')}"
+      PS_APP_HOME:      "%{hiera('fn_app')}"
+      PS_CUST_HOME:     "%{hiera('fn_cust')}"
+      PS_CFG_HOME:      "%{hiera('ps_config_home')}"
+      PS_FILEDIR:       "%{hiera('fn_cust')}/files"
+      TEMP:             "%{hiera('fn_cust')}/temp"
+      TMP:              "%{hiera('fn_cust')}/temp"
+
+  "hrdev":
+    os_user:         "%{hiera('domain_user')}"
+    ps_cfg_home_dir: "%{hiera('ps_config_home')}"
+
+    db_settings:
+      db_name:        "HRDEV"
+      db_type:        "%{hiera('db_platform')}"
+      db_opr_id:      "%{hiera('appserv_user')}"
+      db_opr_pwd:     "%{hiera('appserv_user_pwd')}"
+      db_connect_id:  "%{hiera('connect_id')}"
+      db_connect_pwd: "%{hiera('connect_pwd')}"
+
+    config_settings:
+      Process Scheduler/PrcsServerName:       "PSUNX"
+      Security/DomainConnectionPwd:           "%{hiera('domain_conn_pwd')}"
+      Domain Settings/Allow Dynamic Changes:  Y
+      SMTP Settings/SMTPServer:               "%{hiera('smtp_server')}"
+      SMTP Settings/SMTPPort:                 "%{hiera('smtp_port')}"
+      SMTP Settings/SMTPSourceMachine:        '%PS_MACH%'
+      SMTP Settings/SMTPSender:               "%{hiera('smtp_sender')}"
+      PSTOOLS/JavaVM Options:                 '-Dxdo.ConfigFile=%PS_CFG_HOME%/appserv/xdo.cfg -Xms32m -Xmx128m' # TODO
+      PSMONITORSRV/JavaVM Options:            '-Dxdo.ConfigFile=%PS_CFG_HOME%/appserv/xdo.cfg -Xms32m -Xmx128m' # TODO
+      SQR/PSSQR:                              '%PS_CUST_HOME%/sqr:%PS_APP_HOME%/sqr:%PS_HOME%/sqr'
+
+    feature_settings:
+      MSTRSRV:      "Yes"
+      APPENG:       "No"
+
+    env_settings:
+      PS_HOME:          "%{hiera('ps_home_location')}"
+      PS_APP_HOME:      "%{hiera('hr_app')}"
+      PS_CUST_HOME:     "%{hiera('hr_cust')}"
+      PS_CFG_HOME:      "%{hiera('ps_config_home')}"
+      PS_FILEDIR:       "%{hiera('hr_cust')}/files"
+      TEMP:             "%{hiera('hr_cust')}/temp"
+      TMP:              "%{hiera('hr_cust')}/temp"
+
+
+pia_domain_list:
+  "fndev":
+    os_user:            "%{hiera('domain_user')}"
+    ps_cfg_home_dir:    "%{hiera('ps_config_home')}"
+    gateway_user:       "%{hiera('pia_gateway_user')}"
+    gateway_user_pwd:   "%{hiera('pia_gateway_pass')}"
+    auth_token_domain:  "%{hiera('pia_auth_token_domain')}"
+    cookie_name:        "FDEV-PORTAL-JSESSIONID"
+    java_options:       "-server -Xms512m -Xmx512m -XX:MaxPermSize=256m -Dtoplink.xml.platform=oracle.toplink.platform.xml.jaxp.JAXPPlatform -Dcom.sun.xml.namespace.QName.useCompatibleSerialVersionUID=1.0"
+
+    webserver_settings:
+      webserver_type:           "%{hiera('webserver_type')}"
+      webserver_home:           "%{hiera('weblogic_location')}"
+      webserver_admin_user:     "%{hiera('weblogic_admin')}"
+      webserver_admin_user_pwd: "%{hiera('weblogic_pass')}"
+      webserver_admin_port:     "2300"
+      webserver_http_port:      "2300"
+      webserver_https_port:     "2343"
+
+    config_settings:
+      Servers/PIA/WebServer/PIA/WebServerLog/PIA:
+        LoggingEnabled:         true
+        LogFileFormat:          extended
+        BufferSizeKB:           4
+        ELFFields:              'date time cs-method cs-uri sc-status cs-username cs(user-agent) s-ip c-ip cs(X-Forwarded-For) time-taken bytes'
+
+    site_list:
+      "fndev":
+        appserver_connections: "%{hiera('fn_pia_psserver_list')}"
+        domain_conn_pwd:       "%{hiera('domain_conn_pwd')}"
+
+        webprofile_settings:
+          profile_name:        "%{hiera('pia_webprofile_name')}"
+          profile_user:        "PTWEBSERVER"
+          profile_user_pwd:    "%{hiera('ptwebsrv_user_pwd')}"
+
+        report_repository_dir: "%{hiera('report_repository_dir')}"
+
+  "hrdev":
+    os_user:            "%{hiera('domain_user')}"
+    ps_cfg_home_dir:    "%{hiera('ps_config_home')}"
+    gateway_user:       "%{hiera('pia_gateway_user')}"
+    gateway_user_pwd:   "%{hiera('pia_gateway_pass')}"
+    auth_token_domain:  "%{hiera('pia_auth_token_domain')}"
+    cookie_name:        "HRDEV-PORTAL-JSESSIONID"
+    java_options:       "-server -Xms512m -Xmx512m -XX:MaxPermSize=256m -Dtoplink.xml.platform=oracle.toplink.platform.xml.jaxp.JAXPPlatform -Dcom.sun.xml.namespace.QName.useCompatibleSerialVersionUID=1.0"
+
+    webserver_settings:
+      webserver_type:           "%{hiera('webserver_type')}"
+      webserver_home:           "%{hiera('weblogic_location')}"
+      webserver_admin_user:     "%{hiera('weblogic_admin')}"
+      webserver_admin_user_pwd: "%{hiera('weblogic_pass')}"
+      webserver_admin_port:     "1300"
+      webserver_http_port:      "1300"
+      webserver_https_port:     "1343"
+
+    config_settings:
+      Servers/PIA/WebServer/PIA/WebServerLog/PIA:
+        LoggingEnabled:         true
+        LogFileFormat:          extended
+        BufferSizeKB:           4
+        ELFFields:              'date time cs-method cs-uri sc-status cs-username cs(user-agent) s-ip c-ip cs(X-Forwarded-For) time-taken bytes'
+
+    site_list:
+      "hrdev":
+        appserver_connections: "%{hiera('hr_pia_psserver_list')}"
+        domain_conn_pwd:       "%{hiera('domain_conn_pwd')}"
+
+        webprofile_settings:
+          profile_name:        "%{hiera('pia_webprofile_name')}"
+          profile_user:        PTWEBSERVER
+          profile_user_pwd:    "%{hiera('ptwebsrv_user_pwd')}"
+
+        report_repository_dir: "%{hiera('report_repository_dir')}"
+
+
+io_weblogic::prebuilt_pskey: '/u01/software/misc/pskey'
+
+io_portalwar::pia_cookie_name: "%{hiera('db_name')}-PORTAL-PSJSESSIONID"
+io_portalwar::index_redirect: true
+io_portalwar::redirect_target: "./%{hiera('hr_pia_site_name')}/signon.html"
+io_portalwar::source: '/u01/software/dpkfiles/piafiles'
+io_portalwar::signon_page:
+  "hrdev":
+    root:
+      - psadminio-logo.png
+    "%{hiera('hr_pia_site_name')}":
+      portal:
+        - bootstrap.3.3.7.min.js
+        - bootstrap.min.css
+        - bootstrap-theme.min.css
+        - images
+        - jquery.3.2.1.min.js
+        - Placeholders.min.js
+        - psadmin.js
+        - signin.html
+        - psadminio-logo.png
+      psftdocs:
+        - bootstrap.3.3.7.min.js
+        - bootstrap.min.css
+        - bootstrap-theme.min.css
+        - images
+        - jquery.3.2.1.min.js
+        - Placeholders.min.js
+        - psadmin.js
+        - signin.html
+        - psadminio-logo.png
+  "fndev":
+    root:
+      - psadminio-logo.png
+    "%{hiera('fn_pia_site_name')}":
+      portal:
+        - bootstrap.3.3.7.min.js
+        - bootstrap.min.css
+        - bootstrap-theme.min.css
+        - images
+        - jquery.3.2.1.min.js
+        - Placeholders.min.js
+        - psadmin.js
+        - signin.html
+        - psadminio-logo.png
+      psftdocs:
+        - bootstrap.3.3.7.min.js
+        - bootstrap.min.css
+        - bootstrap-theme.min.css
+        - images
+        - jquery.3.2.1.min.js
+        - Placeholders.min.js
+        - psadmin.js
+        - signin.html
+        - psadminio-logo.png
+
+io_erpfirewall::pia:  true
+io_erpfirewall::archive_location: '/u01/software/dpkfiles'
