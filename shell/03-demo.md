@@ -2,14 +2,12 @@
 
 # Demo
 
-!SLIDE bullets
+!SLIDE supplemental guide
 
-# Demo
+Tasks: 
 
 1. Configure `SHELL` Process Type
 1. Run a sample shell script
-
-!SLIDE supplemental guide
 
 # Configure and Run a Shell Script from the Process Scheduler
 

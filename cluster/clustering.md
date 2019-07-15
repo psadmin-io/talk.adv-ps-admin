@@ -1,6 +1,6 @@
 !SLIDE center subsection blue
 
-# PeopleSoft Cluster Administration
+# Clustered Applications
 
 !SLIDE bullets
 
