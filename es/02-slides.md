@@ -8,15 +8,17 @@
 * Search Framework Plugins
 * Configure **and** Deploy Search Indexes
 
-!SLIDE bullets
+!SLIDE center subsection grey
 
-# ACM Demo
+# Demo
+
+!SLIDE supplemental guide
+
+Tasks:
 
 1. Configure ES Cluster
 1. Clear previous ES Deployment Data
 1. Redeploy ALL indexes
-
-!SLIDE supplemental guide
 
 # ACM and Search Framework Demo
 
@@ -62,14 +64,16 @@
   * `?user=`User ID
   * `?attribute=`Filter Attribute
 
-!SLIDE bullets
+!SLIDE center subsection grey
 
-# Callback Security Demo
+# Demo
+
+!SLIDE supplemental guide
+
+Tasks:
 
 1. View documents in Elasticsearch
 1. Test Callback Response
-
-!SLIDE supplemental guide
 
 # Callback Security Demo
 
@@ -92,13 +96,16 @@
 * Default is 120 minutes
 * Configurable in Search Options
 
-!SLIDE bullets
 
-# Cached Security Demo
+!SLIDE center subsection grey
 
-1. Query the `orcl_es_acl` index
+# Demo
 
 !SLIDE supplemental guide
+
+Tasks:
+
+1. Query the `orcl_es_acl` index
 
 # Cached Security Demo
 
@@ -116,15 +123,17 @@
 * Elasticsearch Replicas
 * Elasticsearch Refresh Interval
 
-!SLIDE bullets
+!SLIDE center subsection grey
 
-# Full Build Tuning Demo
+# Demo
+
+!SLIDE supplemental guide
+
+Tasks:
 
 1. Verify Direct Transfer is enabled
 1. Change Refresh Interval setting
 1. Reduce Replicas
-
-!SLIDE supplemental guide
 
 # Full Build Tuning Demo
 
