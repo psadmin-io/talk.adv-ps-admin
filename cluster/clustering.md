@@ -27,47 +27,94 @@
     * Search
     * Approvals
     * Notifications
-    * User Personalizations
-* TODO
+    * User Preferences 
+
+~~~SECTION:notes~~~
+
+~~~ENDSECTION~~~
 
 !SLIDE bullets
 
-# Topics Ideas
+# Setting up Nodes
 
-1. How to setup nodes
-1. How to setup IB Network
-1. How back button history works
-1. Federated Push Notifications
-    1. jolt failover string
-    1. IB app server issue
-1. Federated approvals tile
-1. Federated preferences
-1. UniNav Homepages/Tiles
+1. Setting up PeopleSoft Interaction Hub with PeopleSoft Applications (Doc ID 1545044.1)
+1. In HUB (Gateway)
+    1. HUB/EMPL
+        1. Portal Host Node = unchecked
+        1. Network NOde Name = ' '
+    1. FMS
+        1. Portal Host Node = checked
+        1. Network NOde Name = ' '
+    1. ERP
+        1. Portal Host Node = checked
+        1. Network NOde Name = 'FMS'
+1. In FMS (Content Provider)
+    1. HUB/EMPL
+        1. Portal Host Node = unchecked
+        1. Network NOde Name = ' '
+    1. FMS
+        1. Portal Host Node = checked
+        1. Network NOde Name = ' '
+    1. ERP
+        1. Portal Host Node = checked
+        1. Network NOde Name = 'FMS' 
 
 
+~~~SECTION:notes~~~
+~~~ENDSECTION~~~
 
+# CheckToken
+
+1. IN web profile - auth sites
+    1. CheckToken - Allow Domain Compare 
+1. LB issues
+    1. Fixed in 8.57.05?
+    1. Disable in Web PRofile (WebCheckToken)
+    1. E-PIA: PT 8.56x SSO Troubleshooting Tips due to CheckTokenID feature (Doc ID 2427220.1)
+
+
+~~~SECTION:notes~~~
+
+~~~ENDSECTION~~~
+
+
+!SLIDE bullets
+
+# Setting up IB Network
+
+1. TODO
+1. This sets up SSO security?!
+1. Also a lot of Service Operations
+
+~~~SECTION:notes~~~
+
+~~~ENDSECTION~~~
+
+!SLIDE bullets
+
+# User Security
+
+* Needs to be in both DBs
+* Needs security to SSOTester iScript
+
+~~~SECTION:notes~~~
+
+~~~ENDSECTION~~~
+
+!SLIDE bullets
+
+# Unified Navigation
+
+~~~SECTION:notes~~~
+
+~~~ENDSECTION~~~
 
 !SLIDE center subsection grey
 
 # Demo
 
-~~~SECTION:guide~~~
+~~~SECTION:notes~~~
 
-> *Estimated Time: 10 min*
+* 
 
-## Configure Change Assistant from the command line
-
-        @@@powershellconsole
-        PS C:\> New-Item -Path c:\psft\ca\output -ItemType Directory
-        PS C:\> New-Item -Path c:\psft\ca\stage -ItemType Directory
-        PS C:\> New-Item -Path c:\psft\ca\download -ItemType Directory
-        
-We can configure Change Assistant from the GUI, or from the command line. Since we will be configuring Change Assistant each time a new PeopleSoft Image is released, let's focus on using the command line so we can automate this process.
-
-Let's use a script to default the common values and so we reuse the command line option for new installations.
-
-        @@@powershellconsole
-        PS C:\vagrant\\856-psadmin-delta-scripts\ca> .\configureCA.ps1 -action options -pt_version 8.56.05 -pi_version hr025
-        Update Manager Options updated successfully.
-
-> The powershell script can be modified to fit your installation patterns, but its a handy tool to simplify CA deployments.
+~~~ENDSECTION~~~

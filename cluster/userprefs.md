@@ -1,16 +1,23 @@
 !SLIDE center subsection blue
 
-# PeopleSoft Cluster Administration
+# User Preferences
 
 !SLIDE bullets
 
-# What is a PeopleSoft Cluster?
+# User Preferences
+
+* TODO
+
+~~~SECTION:notes~~~
+
+158 - Federated User Preferences
+
+~~~ENDSECTION~~~
 
 !SLIDE bullets
 
-* Multiple connected PeopleSoft environments
-* Creates seamless, connected UI
-* Starting 8.56+, no longer need Interaction HUB
+# New Framework
+
 * TODO
 
 ~~~SECTION:notes~~~
@@ -19,55 +26,57 @@
 
 !SLIDE bullets
 
-# What does it get us?
+# Custom Preferences
 
-* Consolidated Homepages and Tiles
-* Remote Registry
-* Federated Features
-    * Search
-    * Approvals
-    * Notifications
-    * User Personalizations
 * TODO
 
-!SLIDE bullets
+~~~SECTION:notes~~~
 
-# Topics Ideas
+~~~ENDSECTION~~~
 
-1. How to setup nodes
-1. How to setup IB Network
-1. How back button history works
-1. Federated Push Notifications
-    1. jolt failover string
-    1. IB app server issue
-1. Federated approvals tile
-1. Federated preferences
-1. UniNav Homepages/Tiles
+# Federated User Preferences
 
+* TODO
 
+~~~SECTION:notes~~~
 
+Federated User Preferences @ 20:00
+	• PeopleBooks
+	• Clustering
+		○ https://docs.oracle.com/cd/E99483_01/pt857pbr1/eng/pt/tsec/concept_UnderstandingTheMyPreferencesUserInterface.html#ufc5aa618-62bd-4b78-afba-68cce300a9ef
+		○ The My Preferences link is cluster-aware. As a result, when you click the link it always shows the gateway system’s My Preferences component.
+		○ Changes made to the General Settings preferences are synchronized to all systems in the same cluster automatically.
+		○ The My Preferences page displays preference items from all systems in the same cluster and allows users to change settings in those systems from within the same My Preferences page.
+	• Dev Custom My Pref Personalization Items
+		○ https://goo.gl/j6w3Lc
+	• Sync Message
+		○ PTUN_USER_PREFERENCES - Unified User Preferences
+		○ Fires at My Pref page load and save
+		○ Appears to look at node network, regardless of Active Routing
+			▪ I saw Errors going back to 8.54 Nodes I didn't know were in network
+	• Questions
+		○ How do we handle PT mixed cluster?
+		○ Are all apps using this new framework? 
+		○ What are some good use cases for custom items?
+			▪ Branding options?
+			▪ Enable/Disable breadcrumbs 🙂
+
+Custom My Preferences @ 35:00
+
+~~~ENDSECTION~~~
 
 !SLIDE center subsection grey
 
 # Demo
 
-~~~SECTION:guide~~~
+~~~SECTION:notes~~~
 
-> *Estimated Time: 10 min*
+https://docs.oracle.com/cd/E92519_01/pt856pbr2/eng/pt/tsec/concept_UnderstandingTheMyPreferencesUserInterface.html
 
-## Configure Change Assistant from the command line
+My Preferences in Clustered Environments, Press Enter to collapse
 
-        @@@powershellconsole
-        PS C:\> New-Item -Path c:\psft\ca\output -ItemType Directory
-        PS C:\> New-Item -Path c:\psft\ca\stage -ItemType Directory
-        PS C:\> New-Item -Path c:\psft\ca\download -ItemType Directory
-        
-We can configure Change Assistant from the GUI, or from the command line. Since we will be configuring Change Assistant each time a new PeopleSoft Image is released, let's focus on using the command line so we can automate this process.
+Service Operation: PTUN_USER_PREFERENCES
 
-Let's use a script to default the common values and so we reuse the command line option for new installations.
+Handler: PTGP_GUIDED_PROCESS:IBHandlers:UnifiedUserPreferenceHandler.OnRequest
 
-        @@@powershellconsole
-        PS C:\vagrant\\856-psadmin-delta-scripts\ca> .\configureCA.ps1 -action options -pt_version 8.56.05 -pi_version hr025
-        Update Manager Options updated successfully.
-
-> The powershell script can be modified to fit your installation patterns, but its a handy tool to simplify CA deployments.
+~~~ENDSECTION~~~
