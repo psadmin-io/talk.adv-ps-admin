@@ -14,9 +14,8 @@
 # Dan Iverson
 
 * PeopleSoft Administrator
-* Developer, Tech Lead, Project Manager
 * Oracle ACE
-* 17+ Years with PeopleSoft
+* 16+ Years with PeopleSoft
 
 !SLIDE bullets
 
