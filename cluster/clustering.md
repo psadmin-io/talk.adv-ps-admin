@@ -138,18 +138,18 @@
 
 # Clustered Applications Demo
 
-* Node setup
-* Show CheckToken setting on node and disable in WebProfile
-* IB Node Network
-    * show list, unadd FN
-    * show sso setup and node routing count
-    * add FM
-    * show sso setup and node routing count
-* User Security
-    * TODO
-* Uni Nav
-    * Show homepage/tile merge
-        * TODO how best to do this?
-    * Show remote nav
-    * Show recent places
-    * Show Node switch in URL hack
+1. Node setup
+1. Show CheckToken setting on node and disable in WebProfile
+1. IB Node Network
+    1. show list, unadd FN
+    1. show sso setup and node routing count
+    1. add FM
+    1. show sso setup and node routing count
+1. User Security
+    1. TODO
+1. Uni Nav
+    1. Show homepage/tile merge
+        1. TODO how best to do this?
+    1. Show remote nav
+    1. Show recent places
+    1. Show Node switch in URL hack

@@ -47,15 +47,22 @@
 
 # Back Button Demo
 
-* JavaScript Location
-    * PT_COMMON > PT_HISTORY
-* Create the back button HTML
-    * backNavigation.classicBackButton.create();
-* Add to History
-    * AddToHistory(label, keyData, userData, pageName, stateNum, elemNum, classicURL, dashboard, appBcData, nPost, userQueryString, bReturnToLastPage) 
-    * AddToHistory("Testing", "", "", "", 0, 0, "http://google.com", 0, "","","",true);
-* Examples
-    * var pt_history = getHistoryObject();
-    * pt_history.pop();
-    * pt_history.save();
-    * getHistoryObject().nodes
+## JavaScript Location
+
+1. PT_COMMON > PT_HISTORY
+
+## Create the back button HTML
+
+1. backNavigation.classicBackButton.create();
+
+## Add to History
+
+1. AddToHistory(label, keyData, userData, pageName, stateNum, elemNum, classicURL, dashboard, appBcData, nPost, userQueryString, bReturnToLastPage) 
+1. AddToHistory("Testing", "", "", "", 0, 0, "http://google.com", 0, "","","",true);
+
+## Examples
+
+1. var pt_history = getHistoryObject();
+1. pt_history.pop();
+1. pt_history.save();
+1. getHistoryObject().nodes
