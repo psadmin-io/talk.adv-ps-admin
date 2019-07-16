@@ -15,9 +15,12 @@
 
 # psadmin.io Sessions
 
-| **Session ID** | **Date & Time** |  |
+| **Session ID** | **Date & Time** | **Session** |
 | -------------- | --------------- | --------- |
-| TODO	| Wed. Jul. 18, 8:00 am | Title TODO |
+| 100930 | Tues, July 16, 2:15 pm | Enhancing the Deployment Packages |
+| 100950 | Wed. Jul. 17, 1:30 pm | Terraforming PeopleSoft on OCI |
+| 100810 | Thur. Jul. 18, 11:15 am | Advanced PeopleSoft Administration |
+| 100980 | Thur, Jul. 18, 1:45 pm | Help is on the Way with DPK |
 
 !SLIDE bullets
 
