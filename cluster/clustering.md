@@ -69,7 +69,7 @@
 # CheckToken
 
 * read this...
-    https://psadmin.io/2017/10/25/understanding-the-check-token-id-in-peopletools-8-56/
+    * https://psadmin.io/2017/10/25/understanding-the-check-token-id-in-peopletools-8-56/
 
 ~~~SECTION:notes~~~
 
@@ -135,6 +135,8 @@
 ~~~ENDSECTION~~~
 
 !SLIDE supplemental guide
+
+# Clustered Applications Demo
 
 * Node setup
 * Show CheckToken setting on node and disable in WebProfile

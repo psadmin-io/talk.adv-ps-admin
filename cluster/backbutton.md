@@ -45,22 +45,17 @@
 
 !SLIDE supplemental guide
 
-# JavaScript Location
+# Back Button Demo
 
-* PT_COMMON > PT_HISTORY
-
-# Create the back button HTML
-
-* backNavigation.classicBackButton.create();
-
-# Add to History
-
-* AddToHistory(label, keyData, userData, pageName, stateNum, elemNum, classicURL, dashboard, appBcData, nPost, userQueryString, bReturnToLastPage) 
-* AddToHistory("Testing", "", "", "", 0, 0, "http://google.com", 0, "","","",true);
-
-# Examples
-
-* var pt_history = getHistoryObject();
-* pt_history.pop();
-* pt_history.save();
-* getHistoryObject().nodes
+* JavaScript Location
+    * PT_COMMON > PT_HISTORY
+* Create the back button HTML
+    * backNavigation.classicBackButton.create();
+* Add to History
+    * AddToHistory(label, keyData, userData, pageName, stateNum, elemNum, classicURL, dashboard, appBcData, nPost, userQueryString, bReturnToLastPage) 
+    * AddToHistory("Testing", "", "", "", 0, 0, "http://google.com", 0, "","","",true);
+* Examples
+    * var pt_history = getHistoryObject();
+    * pt_history.pop();
+    * pt_history.save();
+    * getHistoryObject().nodes
