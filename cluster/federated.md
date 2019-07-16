@@ -50,8 +50,8 @@
 
 # Approvals Demo
 
-* Talk about notifications, just shown
-* Show Approvals tile 
-* Show approvals tile CREF cluster setting
-* Show the approvals page, related service operations TODO
-* Run the Introspection and Deployment for EOAW_INTEGRATIONS
+1. Talk about notifications, just shown
+1. Show Approvals tile 
+1. Show approvals tile CREF cluster setting
+1. Show the approvals page, related service operations TODO
+1. Run the Introspection and Deployment for EOAW_INTEGRATIONS
