@@ -11,7 +11,6 @@
 * Multiple connected PeopleSoft environments
 * Creates seamless, connected UI
 * Starting 8.56+, no longer need Interaction HUB
-* TODO
 
 ~~~SECTION:notes~~~
 
@@ -37,7 +36,13 @@
 
 # Setting up Nodes
 
-1. Setting up PeopleSoft Interaction Hub with PeopleSoft Applications (Doc ID 1545044.1)
+* "Setting up Interaction Hub..." Doc
+    *  Doc ID 1545044.1
+* Node config even more important 
+* Both Local and Portal Host Nodes
+* Set CheckToken and have a strong password/cert
+
+~~~SECTION:notes~~~
 1. In HUB (Gateway)
     1. HUB/EMPL
         1. Portal Host Node = unchecked
@@ -59,32 +64,35 @@
         1. Portal Host Node = checked
         1. Network NOde Name = 'FMS' 
 
-
-~~~SECTION:notes~~~
 ~~~ENDSECTION~~~
 
 # CheckToken
 
-1. IN web profile - auth sites
-    1. CheckToken - Allow Domain Compare 
-1. LB issues
-    1. Fixed in 8.57.05?
-    1. Disable in Web PRofile (WebCheckToken)
-    1. E-PIA: PT 8.56x SSO Troubleshooting Tips due to CheckTokenID feature (Doc ID 2427220.1)
-
+* read this...
+    https://psadmin.io/2017/10/25/understanding-the-check-token-id-in-peopletools-8-56/
 
 ~~~SECTION:notes~~~
 
 ~~~ENDSECTION~~~
 
+# CheckToken
+
+* ... or not and disable.
+    * Web Profile custom property
+        WebCheckToken=false
+    * E-PIA: PT 8.56x SSO Troubleshooting Tips due to CheckTokenID 
+        Doc ID 2427220.1
 
 !SLIDE bullets
 
-# Setting up IB Network
+# IB Node Network
 
-1. TODO
-1. This sets up SSO security?!
-1. Also a lot of Service Operations
+* More than just managing/monitoring now
+* Used by different federated features
+* Auto configures multiple things
+    * SSO
+    * Service Operations
+    * Routings
 
 ~~~SECTION:notes~~~
 
@@ -96,6 +104,7 @@
 
 * Needs to be in both DBs
 * Needs security to SSOTester iScript
+    TODO - what is the exact script name and delivered security
 
 ~~~SECTION:notes~~~
 
@@ -104,6 +113,12 @@
 !SLIDE bullets
 
 # Unified Navigation
+
+* Homepages and Tiles combine
+* Recent Places
+* Back Button
+* Search
+* Navigation
 
 ~~~SECTION:notes~~~
 
@@ -115,6 +130,22 @@
 
 ~~~SECTION:notes~~~
 
-* 
-
 ~~~ENDSECTION~~~
+
+!SLIDE supplemental guide
+
+* Node setup
+* Show CheckToken setting on node and disable in WebProfile
+* IB Node Network
+    * show list, unadd FN
+    * show sso setup and node routing count
+    * add FM
+    * show sso setup and node routing count
+* User Security
+    * TODO
+* Uni Nav
+    * Show homepage/tile merge
+        * TODO how best to do this?
+    * Show remote nav
+    * Show recent places
+    * Show Node switch in URL hack
