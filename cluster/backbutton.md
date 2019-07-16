@@ -14,8 +14,6 @@
 
 !SLIDE bullets
 
-!SLIDE bullets
-
 # Tips and Tricks
 
 * Multi Tools version
@@ -26,6 +24,8 @@
 ~~~SECTION:notes~~~
 
 ~~~ENDSECTION~~~
+
+!SLIDE bullets
 
 # How it works
 

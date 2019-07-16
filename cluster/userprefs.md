@@ -42,7 +42,9 @@
 	* Fires at My Pref page load and save
 	* Appears to look at node network, regardless of Active Routing
     * TODO
-	
+
+!SLIDE bullets
+
 # References
 
 * Clustering
@@ -59,6 +61,8 @@
 # Demo
 
 !SLIDE supplemental guide
+
+# User Preferences Demo
 
 * Show user pref page and how it is in HCM but has FMS stuff
 * Show service PTUN_USER_PREFERENCES

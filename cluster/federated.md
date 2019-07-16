@@ -15,6 +15,17 @@
     * (Andy's Writeup on psadmin.io)[https://psadmin.io/2017/04/26/configure-push-notifications/]
     * Doc ID 2029617.1 - How to Setup Push Notifications ...
 
+!SLIDE center subsection grey
+
+# Demo
+
+!SLIDE supplemental guide
+
+# Push Notifications Demo
+
+* Show notify window and a popup example
+* Show federated PN example with workflow/default msg
+
 !SLIDE bullets
 
 # Approvals 
@@ -37,12 +48,10 @@
 
 !SLIDE supplemental guide
 
-* PN
-    * Show notify window and a popup example
-    * Show federated PN example with workflow/default msg
-* Approvals
-    * Talk about notifications, just shown
-    * Show Approvals tile 
-    * Show approvals tile CREF cluster setting
-    * Show the approvals page, related service operations TODO
-    * Run the Introspection and Deployment for EOAW_INTEGRATIONS
+# Approvals Demo
+
+* Talk about notifications, just shown
+* Show Approvals tile 
+* Show approvals tile CREF cluster setting
+* Show the approvals page, related service operations TODO
+* Run the Introspection and Deployment for EOAW_INTEGRATIONS

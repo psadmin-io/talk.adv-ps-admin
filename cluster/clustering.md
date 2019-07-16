@@ -6,8 +6,6 @@
 
 # What is a PeopleSoft Cluster?
 
-!SLIDE bullets
-
 * Multiple connected PeopleSoft environments
 * Creates seamless, connected UI
 * Starting 8.56+, no longer need Interaction HUB
@@ -66,6 +64,8 @@
 
 ~~~ENDSECTION~~~
 
+!SLIDE bullets
+
 # CheckToken
 
 * read this...
@@ -74,6 +74,8 @@
 ~~~SECTION:notes~~~
 
 ~~~ENDSECTION~~~
+
+!SLIDE bullets
 
 # CheckToken
 
