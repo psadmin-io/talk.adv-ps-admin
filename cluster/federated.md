@@ -23,8 +23,8 @@
 
 # Push Notifications Demo
 
-* Show notify window and a popup example
-* Show federated PN example with workflow/default msg
+1. Show notify window and a popup example
+1. Show federated PN example with workflow/default msg
 
 !SLIDE bullets
 
