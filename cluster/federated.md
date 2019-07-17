@@ -23,8 +23,10 @@
 
 # Push Notifications Demo
 
-1. Show notify window and a popup example
-1. Show federated PN example with workflow/default msg
+1. Notify window
+1. Federated PN example with workflow/default msg
+1. Async message for PTPN_*
+1. Web profile setting PNSubscribe and ps_theme
 
 !SLIDE bullets
 
@@ -51,7 +53,7 @@
 # Approvals Demo
 
 1. Talk about notifications, just shown
-1. Show Approvals tile 
-1. Show approvals tile CREF cluster setting
-1. Show the approvals page, related service operations TODO
-1. Run the Introspection and Deployment for EOAW_INTEGRATIONS
+1. Approvals tile, counter 
+1. Approvals page, HR and FN
+1. Approvals tile CREF cluster setting
+1. Service EOAW_INTEGRATIONS - Introspection and Deployment

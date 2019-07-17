@@ -63,6 +63,10 @@
 ## Examples
 
 1. var pt_history = getHistoryObject();
+1. pt_history.nodes();
 1. pt_history.pop();
 1. pt_history.save();
-1. getHistoryObject().nodes
+1. var pt_history = getHistoryObject();
+1. pt_history.nodes();
+1. Try back button 
+TODO - not working?

@@ -138,18 +138,32 @@
 
 # Clustered Applications Demo
 
-1. Node setup
-1. Show CheckToken setting on node and disable in WebProfile
-1. IB Node Network
-    1. show list, unadd FN
-    1. show sso setup and node routing count
-    1. add FM
-    1. show sso setup and node routing count
-1. User Security
-    1. TODO
-1. Uni Nav
-    1. Show homepage/tile merge
-        1. TODO how best to do this?
-    1. Show remote nav
-    1. Show recent places
-    1. Show Node switch in URL hack
+## Node setup
+
+1. PSFT_HR/EP - CheckToken setting on node 
+1. ERP - Portal host node setting
+1. Disable in WebProfile
+
+## IB Node Network
+
+1. show list, unadd FN
+1. show sso setup and node routing count
+1. add FM
+1. show sso setup and node routing count
+
+## User Security
+
+1. TODO
+
+## Uni Nav
+
+1. Homepage/Tile merge
+    1. AP tile
+    1. Show CREF name diff, but same label    
+1. Remote Navigation
+1. Recent Places
+1. Misc Tricks
+    1. Node Switch in URL
+    1. Tripping cache Folder trick
+    1. Migrate parent folder on CREF changes
+
