@@ -64,9 +64,10 @@
 
 1. var pt_history = getHistoryObject();
 1. pt_history.nodes();
-1. pt_history.pop();
-1. pt_history.save();
+1. Populate stack
+    1. Service Ops, Service Config
+1. _AddToHistory("psadmin.io 1", "", "", "", 0, 0, "https://psadmin.io", 1, "","","",true);
+1. _AddToHistory("psadmin.io 2", "", "", "", 0, 0, "https://psadmin.io", 1, "","","",true);
 1. var pt_history = getHistoryObject();
 1. pt_history.nodes();
 1. Try back button 
-TODO - not working?
