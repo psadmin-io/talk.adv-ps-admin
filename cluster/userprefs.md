@@ -64,6 +64,7 @@
 
 # User Preferences Demo
 
-* Show user pref page and how it is in HCM but has FMS stuff
-* Show service PTUN_USER_PREFERENCES
-    * Enable logging and show
+* User Pref page - FN and HR content
+    * Payroll and GL
+* General updates sync gateway to others - test time change
+* Service PTUN_USER_PREFERENCES
