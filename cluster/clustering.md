@@ -6,12 +6,9 @@
 
 # What is a PeopleSoft Cluster?
 
-!SLIDE bullets
-
 * Multiple connected PeopleSoft environments
 * Creates seamless, connected UI
 * Starting 8.56+, no longer need Interaction HUB
-* TODO
 
 ~~~SECTION:notes~~~
 
@@ -27,47 +24,146 @@
     * Search
     * Approvals
     * Notifications
-    * User Personalizations
-* TODO
+    * User Preferences 
+
+~~~SECTION:notes~~~
+
+~~~ENDSECTION~~~
 
 !SLIDE bullets
 
-# Topics Ideas
+# Setting up Nodes
 
-1. How to setup nodes
-1. How to setup IB Network
-1. How back button history works
-1. Federated Push Notifications
-    1. jolt failover string
-    1. IB app server issue
-1. Federated approvals tile
-1. Federated preferences
-1. UniNav Homepages/Tiles
+* "Setting up Interaction Hub..." Doc
+    *  Doc ID 1545044.1
+* Node config even more important 
+* Both Local and Portal Host Nodes
+* Set CheckToken and have a strong password/cert
 
+~~~SECTION:notes~~~
+1. In HUB (Gateway)
+    1. HUB/EMPL
+        1. Portal Host Node = unchecked
+        1. Network NOde Name = ' '
+    1. FMS
+        1. Portal Host Node = checked
+        1. Network NOde Name = ' '
+    1. ERP
+        1. Portal Host Node = checked
+        1. Network NOde Name = 'FMS'
+1. In FMS (Content Provider)
+    1. HUB/EMPL
+        1. Portal Host Node = unchecked
+        1. Network NOde Name = ' '
+    1. FMS
+        1. Portal Host Node = checked
+        1. Network NOde Name = ' '
+    1. ERP
+        1. Portal Host Node = checked
+        1. Network NOde Name = 'FMS' 
 
+~~~ENDSECTION~~~
 
+!SLIDE bullets
+
+# CheckToken
+
+* read this...
+    * https://psadmin.io/2017/10/25/understanding-the-check-token-id-in-peopletools-8-56/
+
+~~~SECTION:notes~~~
+
+~~~ENDSECTION~~~
+
+!SLIDE bullets
+
+# CheckToken
+
+* ... or not and disable.
+    * Web Profile custom property
+        WebCheckToken=false
+    * E-PIA: PT 8.56x SSO Troubleshooting Tips due to CheckTokenID 
+        Doc ID 2427220.1
+
+!SLIDE bullets
+
+# IB Node Network
+
+* More than just managing/monitoring now
+* Used by different federated features
+* Auto configures multiple things
+    * SSO
+    * Service Operations
+    * Routings
+
+~~~SECTION:notes~~~
+
+~~~ENDSECTION~~~
+
+!SLIDE bullets
+
+# User Security
+
+* Needs to be in both DBs
+* Needs security to SSOTester iScript
+    TODO - what is the exact script name and delivered security
+
+~~~SECTION:notes~~~
+
+~~~ENDSECTION~~~
+
+!SLIDE bullets
+
+# Unified Navigation
+
+* Homepages and Tiles combine
+* Recent Places
+* Back Button
+* Search
+* Navigation
+
+~~~SECTION:notes~~~
+
+~~~ENDSECTION~~~
 
 !SLIDE center subsection grey
 
 # Demo
 
-~~~SECTION:guide~~~
+~~~SECTION:notes~~~
 
-> *Estimated Time: 10 min*
+~~~ENDSECTION~~~
 
-## Configure Change Assistant from the command line
+!SLIDE supplemental guide
 
-        @@@powershellconsole
-        PS C:\> New-Item -Path c:\psft\ca\output -ItemType Directory
-        PS C:\> New-Item -Path c:\psft\ca\stage -ItemType Directory
-        PS C:\> New-Item -Path c:\psft\ca\download -ItemType Directory
-        
-We can configure Change Assistant from the GUI, or from the command line. Since we will be configuring Change Assistant each time a new PeopleSoft Image is released, let's focus on using the command line so we can automate this process.
+# Clustered Applications Demo
 
-Let's use a script to default the common values and so we reuse the command line option for new installations.
+## Node setup
 
-        @@@powershellconsole
-        PS C:\vagrant\\856-psadmin-delta-scripts\ca> .\configureCA.ps1 -action options -pt_version 8.56.05 -pi_version hr025
-        Update Manager Options updated successfully.
+1. PSFT_HR/EP - CheckToken setting on node 
+1. ERP - Portal host node setting
+1. Disable in WebProfile
 
-> The powershell script can be modified to fit your installation patterns, but its a handy tool to simplify CA deployments.
+## IB Node Network
+
+1. show list, unadd FN
+1. show sso setup and node routing count
+1. add FM
+1. show sso setup and node routing count
+
+## User Security
+
+1. TODO
+
+## Uni Nav
+
+1. Homepage/Tile merge
+    1. AP tile
+    1. Show CREF name diff, but same label    
+1. Remote Navigation
+1. Recent Places
+1. Misc Tricks
+    1. Node Switch in URL
+    1. Tripping cache Folder trick
+    1. Migrate parent folder on CREF changes
+

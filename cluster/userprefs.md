@@ -1,17 +1,15 @@
 !SLIDE center subsection blue
 
-# PeopleSoft Cluster Administration
+# User Preferences
 
 !SLIDE bullets
 
-# What is a PeopleSoft Cluster?
+# User Preferences
 
-!SLIDE bullets
-
-* Multiple connected PeopleSoft environments
-* Creates seamless, connected UI
-* Starting 8.56+, no longer need Interaction HUB
-* TODO
+* My Preferences are cluster-aware
+* Always shows the gateway system’s My Preferences component
+* General Settings preferences are synchronized 
+* Displays preference items from all systems in cluster
 
 ~~~SECTION:notes~~~
 
@@ -19,55 +17,54 @@
 
 !SLIDE bullets
 
-# What does it get us?
+# New Framework
 
-* Consolidated Homepages and Tiles
-* Remote Registry
-* Federated Features
-    * Search
-    * Approvals
-    * Notifications
-    * User Personalizations
-* TODO
+* Delivered by Applications
+* Custom Personalizations
+    * Add to General Settings  
+    * Create other custom preference item categories
+        * Creating Fluid components 
+        * Define content references in the My Preferences folder
+    * Order controlled by SEQNBR on CREF
+    * TODO
+
+~~~SECTION:notes~~~
+
+~~~ENDSECTION~~~
 
 !SLIDE bullets
 
-# Topics Ideas
+# Service Operation
 
-1. How to setup nodes
-1. How to setup IB Network
-1. How back button history works
-1. Federated Push Notifications
-    1. jolt failover string
-    1. IB app server issue
-1. Federated approvals tile
-1. Federated preferences
-1. UniNav Homepages/Tiles
+* Sync Message
+    * PTUN_USER_PREFERENCES - Unified User Preferences
+        * Handler: PTGP_GUIDED_PROCESS:IBHandlers:UnifiedUserPreferenceHandler
+	* Fires at My Pref page load and save
+	* Appears to look at node network, regardless of Active Routing
+    * TODO
 
+!SLIDE bullets
 
+# References
 
+* Clustering
+    * https://docs.oracle.com/cd/E99483_01/pt857pbr1/eng/pt/tsec/concept_UnderstandingTheMyPreferencesUserInterface.html#ufc5aa618-62bd-4b78-afba-68cce300a9ef
+* Dev Custom My Pref Personalization Items
+    * https://goo.gl/j6w3Lc
+
+~~~SECTION:notes~~~
+
+~~~ENDSECTION~~~
 
 !SLIDE center subsection grey
 
 # Demo
 
-~~~SECTION:guide~~~
+!SLIDE supplemental guide
 
-> *Estimated Time: 10 min*
+# User Preferences Demo
 
-## Configure Change Assistant from the command line
-
-        @@@powershellconsole
-        PS C:\> New-Item -Path c:\psft\ca\output -ItemType Directory
-        PS C:\> New-Item -Path c:\psft\ca\stage -ItemType Directory
-        PS C:\> New-Item -Path c:\psft\ca\download -ItemType Directory
-        
-We can configure Change Assistant from the GUI, or from the command line. Since we will be configuring Change Assistant each time a new PeopleSoft Image is released, let's focus on using the command line so we can automate this process.
-
-Let's use a script to default the common values and so we reuse the command line option for new installations.
-
-        @@@powershellconsole
-        PS C:\vagrant\\856-psadmin-delta-scripts\ca> .\configureCA.ps1 -action options -pt_version 8.56.05 -pi_version hr025
-        Update Manager Options updated successfully.
-
-> The powershell script can be modified to fit your installation patterns, but its a handy tool to simplify CA deployments.
+* User Pref page - FN and HR content
+    * Payroll and GL
+* General updates sync gateway to others - test time change
+* Service PTUN_USER_PREFERENCES
