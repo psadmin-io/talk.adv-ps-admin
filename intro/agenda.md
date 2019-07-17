@@ -2,11 +2,13 @@
 
 # Agenda
 
-1. psadmin-plus
-1. ACM
-1. Headless Change Assistant
-1. Vagabond and ps-terraform
+1. Elasticsearch Tips
+1. Clustered Applications
+1. The Back Button
+1. Federated Features
+1. DPK Configuration
+1. Process Schedulers and Shell Scripts
 
 ~~~SECTION:notes~~~
-Survey the audience for DPK usage
+
 ~~~ENDSECTION~~~

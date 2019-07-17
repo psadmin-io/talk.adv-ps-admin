@@ -4,13 +4,24 @@
 
 * psadmin.io/reconnect
 * psadmin.io Community
-* Training: 
+* Training:
   1. DPK
   1. PUM and Change Lifecycle
   1. Elasticsearch and Search Framework
 * github.com/psadmin-io
 * psadmin.conf
 
-!SLIDE center subsection blue
+!SLIDE bullets
 
-# Thank you!
+# psadmin.io Sessions
+
+| **Session ID** | **Date & Time** |  |
+| -------------- | --------------- | --------- |
+| TODO	| Wed. Jul. 18, 8:00 am | Title TODO |
+
+!SLIDE bullets
+
+#  Thank You!
+
+* Questions?
+* Session Evaluation: 100810
