@@ -2,11 +2,12 @@
 
 # Back Button
 
-!SLIDE bullets
+!SLIDE bullets incremental
 
 # Back Button
 
 * Button that takes you back
+* Works in mysterious ways
 
 ~~~SECTION:notes~~~
 
@@ -30,7 +31,6 @@
 
 * JavaScript
     * PT_COMMON > PT_HISTORY
-    * backNavigation.classicBackButton.create();
     * var pt_history = getHistoryObject();
 
 ~~~SECTION:notes~~~
@@ -39,7 +39,7 @@
 
 !SLIDE center subsection grey
 
-# Demo
+![Demo](../images/exam.jpg)
 
 !SLIDE supplemental guide
 
