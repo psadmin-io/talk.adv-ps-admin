@@ -12,6 +12,8 @@
 
 # Demo
 
+![Demo](../_images/esacm.jpg)
+
 !SLIDE supplemental guide
 
 Tasks:
@@ -64,9 +66,20 @@ Tasks:
   * `?user=`User ID
   * `?attribute=`Filter Attribute
 
+!SLIDE bullets incremental
+
+# Cached Security
+
+* Callback process is expensive
+* Cache user security in Elasticsearch
+* Default is 120 minutes
+* Configurable in Search Options
+
 !SLIDE center subsection grey
 
 # Demo
+
+![Demo](../_images/escallback.jpg)
 
 !SLIDE supplemental guide
 
@@ -87,19 +100,6 @@ Tasks:
         @@@bash
         curl -u PS:PS http://hr030-lnxft-1.midtier.psft.oraclevcn.com:8000/PSIGW/RESTListeningConnector/PSFT_HR/getsecurityvalues.v1/?type=ptportalregistry_hrpum?user=PS?attribute=PORTAL_SECTYPE_ORCL_ES_ACL | jq
 
-!SLIDE bullets incremental
-
-# Cached Security
-
-* Callback process is expensive
-* Cache user security in Elasticsearch
-* Default is 120 minutes
-* Configurable in Search Options
-
-
-!SLIDE center subsection grey
-
-# Demo
 
 !SLIDE supplemental guide
 
@@ -126,6 +126,8 @@ Tasks:
 !SLIDE center subsection grey
 
 # Demo
+
+![Demo](../_images/fullbuildtuning.jpg)
 
 !SLIDE supplemental guide
 

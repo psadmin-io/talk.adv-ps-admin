@@ -2,6 +2,8 @@
 
 # Demo
 
+![Demo](../_images/shell.jpg)
+
 !SLIDE supplemental guide
 
 Tasks: 
