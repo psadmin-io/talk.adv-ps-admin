@@ -58,6 +58,8 @@
 
 # Demo
 
+![Demo](../_images/pref.jpg)
+
 !SLIDE supplemental guide
 
 # User Preferences Demo
