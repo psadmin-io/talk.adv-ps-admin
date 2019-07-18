@@ -1,17 +1,13 @@
 !SLIDE center subsection blue
 
-# PeopleSoft Cluster Administration
+# Back Button
 
-!SLIDE bullets
+!SLIDE bullets incremental
 
-# What is a PeopleSoft Cluster?
+# Back Button
 
-!SLIDE bullets
-
-* Multiple connected PeopleSoft environments
-* Creates seamless, connected UI
-* Starting 8.56+, no longer need Interaction HUB
-* TODO
+* Button that takes you back
+* Works in mysterious ways
 
 ~~~SECTION:notes~~~
 
@@ -19,55 +15,59 @@
 
 !SLIDE bullets
 
-# What does it get us?
+# Tips and Tricks
 
-* Consolidated Homepages and Tiles
-* Remote Registry
-* Federated Features
-    * Search
-    * Approvals
-    * Notifications
-    * User Personalizations
-* TODO
+* Multi Tools version
+* Component settings
+* Nav Collections 
+
+~~~SECTION:notes~~~
+
+~~~ENDSECTION~~~
 
 !SLIDE bullets
 
-# Topics Ideas
+# How it works
 
-1. How to setup nodes
-1. How to setup IB Network
-1. How back button history works
-1. Federated Push Notifications
-    1. jolt failover string
-    1. IB app server issue
-1. Federated approvals tile
-1. Federated preferences
-1. UniNav Homepages/Tiles
+* JavaScript
+    * PT_COMMON > PT_HISTORY
+    * var pt_history = getHistoryObject();
 
+~~~SECTION:notes~~~
 
-
+~~~ENDSECTION~~~
 
 !SLIDE center subsection grey
 
 # Demo
 
-~~~SECTION:guide~~~
+![Demo](../_images/exam.jpg)
 
-> *Estimated Time: 10 min*
+!SLIDE supplemental guide
 
-## Configure Change Assistant from the command line
+# Back Button Demo
 
-        @@@powershellconsole
-        PS C:\> New-Item -Path c:\psft\ca\output -ItemType Directory
-        PS C:\> New-Item -Path c:\psft\ca\stage -ItemType Directory
-        PS C:\> New-Item -Path c:\psft\ca\download -ItemType Directory
-        
-We can configure Change Assistant from the GUI, or from the command line. Since we will be configuring Change Assistant each time a new PeopleSoft Image is released, let's focus on using the command line so we can automate this process.
+## JavaScript Location
 
-Let's use a script to default the common values and so we reuse the command line option for new installations.
+1. PT_COMMON > PT_HISTORY
 
-        @@@powershellconsole
-        PS C:\vagrant\\856-psadmin-delta-scripts\ca> .\configureCA.ps1 -action options -pt_version 8.56.05 -pi_version hr025
-        Update Manager Options updated successfully.
+## Create the back button HTML
 
-> The powershell script can be modified to fit your installation patterns, but its a handy tool to simplify CA deployments.
+1. backNavigation.classicBackButton.create();
+
+## Add to History
+
+1. AddToHistory(label, keyData, userData, pageName, stateNum, elemNum, classicURL, dashboard, appBcData, nPost, userQueryString, bReturnToLastPage) 
+1. AddToHistory("Testing", "", "", "", 0, 0, "http://google.com", 0, "","","",true);
+
+## Examples
+
+1. var pt_history = getHistoryObject();
+1. pt_history.nodes();
+1. Populate stack
+    1. Service Ops, Service Config
+1. _AddToHistory("psadmin.io 1", "", "", "", 0, 0, "https://psadmin.io", 1, "","","",true);
+1. _AddToHistory("psadmin.io 2", "", "", "", 0, 0, "https://psadmin.io", 1, "","","",true);
+1. var pt_history = getHistoryObject();
+1. pt_history.nodes();
+1. Try back button 
