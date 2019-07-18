@@ -106,7 +106,6 @@
 
 * Needs to be in both DBs
 * Needs security to SSOTester iScript
-    TODO - what is the exact script name and delivered security
 
 ~~~SECTION:notes~~~
 

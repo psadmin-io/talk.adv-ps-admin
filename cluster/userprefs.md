@@ -26,7 +26,6 @@
         * Creating Fluid components 
         * Define content references in the My Preferences folder
     * Order controlled by SEQNBR on CREF
-    * TODO
 
 ~~~SECTION:notes~~~
 
@@ -41,7 +40,6 @@
         * Handler: PTGP_GUIDED_PROCESS:IBHandlers:UnifiedUserPreferenceHandler
 	* Fires at My Pref page load and save
 	* Appears to look at node network, regardless of Active Routing
-    * TODO
 
 !SLIDE bullets
 

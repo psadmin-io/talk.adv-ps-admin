@@ -6,7 +6,7 @@
 
 # Back Button
 
-* TODO: image of back button
+* Button that takes you back
 
 ~~~SECTION:notes~~~
 
@@ -17,9 +17,8 @@
 # Tips and Tricks
 
 * Multi Tools version
-    * 8.54.21? and up?
 * Component settings
-* Nav Collections TODO
+* Nav Collections 
 
 ~~~SECTION:notes~~~
 
@@ -31,7 +30,6 @@
 
 * JavaScript
     * PT_COMMON > PT_HISTORY
-* TODO - call out details
     * backNavigation.classicBackButton.create();
     * var pt_history = getHistoryObject();
 
