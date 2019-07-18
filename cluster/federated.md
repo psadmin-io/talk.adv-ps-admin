@@ -20,6 +20,8 @@
 
 # Demo
 
+![Demo](../_images/notify.jpg)
+
 !SLIDE supplemental guide
 
 # Push Notifications Demo
@@ -48,6 +50,8 @@
 !SLIDE center subsection grey
 
 # Demo
+
+![Demo](../_images/approvals.jpg)
 
 !SLIDE supplemental guide
 

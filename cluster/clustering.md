@@ -129,6 +129,8 @@
 
 # Demo
 
+![Demo](../_images/cluster.jpg)
+
 ~~~SECTION:notes~~~
 
 ~~~ENDSECTION~~~
@@ -149,10 +151,6 @@
 1. show sso setup and node routing count
 1. add FM
 1. show sso setup and node routing count
-
-## User Security
-
-1. TODO
 
 ## Uni Nav
 
