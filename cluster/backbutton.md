@@ -39,6 +39,8 @@
 
 !SLIDE center subsection grey
 
+# Demo
+
 ![Demo](../_images/exam.jpg)
 
 !SLIDE supplemental guide

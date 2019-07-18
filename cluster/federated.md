@@ -12,7 +12,8 @@
     * Inter-domain   
     * Federated
 * References
-    * (Andy's Writeup on psadmin.io)[https://psadmin.io/2017/04/26/configure-push-notifications/]
+    * Andy's Writeup
+       * https://psadmin.io/2017/04/26/configure-push-notifications/
     * Doc ID 2029617.1 - How to Setup Push Notifications ...
 
 !SLIDE center subsection grey
