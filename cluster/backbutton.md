@@ -39,7 +39,7 @@
 
 !SLIDE center subsection grey
 
-![Demo](../images/exam.jpg)
+![Demo](../_images/exam.jpg)
 
 !SLIDE supplemental guide
 
