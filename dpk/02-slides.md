@@ -89,6 +89,8 @@ There are 6 main sections in the DPK configuration:
 
 # Demo
 
+![Demo](../_images/yaml.jpg)
+
 ~~~SECTION:notes~~~
 Let's look at a `psft_configuration.yaml` file to see the options.
 
