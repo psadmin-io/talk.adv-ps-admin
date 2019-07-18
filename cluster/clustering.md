@@ -131,10 +131,6 @@
 
 ![Demo](../_images/cluster.jpg)
 
-~~~SECTION:notes~~~
-
-~~~ENDSECTION~~~
-
 !SLIDE supplemental guide
 
 # Clustered Applications Demo

@@ -2,24 +2,13 @@
 
 # Demo
 
-<<<<<<< HEAD
-!SLIDE bullets
-
-# Demo
-=======
 !SLIDE supplemental guide
 
 Tasks: 
->>>>>>> reconnect2019
 
 1. Configure `SHELL` Process Type
 1. Run a sample shell script
 
-<<<<<<< HEAD
-!SLIDE supplemental guide
-
-=======
->>>>>>> reconnect2019
 # Configure and Run a Shell Script from the Process Scheduler
 
 1. Navigate to PeopleTools > Process Scheduler > Process Type

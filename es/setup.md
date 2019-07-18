@@ -126,3 +126,29 @@ chmod +x shell_sample.sh
 # /u01/app/oracle/product/home/psadm2/psft.sh
 # /u01/app/oracle/product/home/psadm2/shell_sample.sh
 ```
+
+## IO Fluid Stylesheets
+
+Download the DMW project and stage it on the server.
+
+```bash
+sudo su - psadm2
+cd $PS_CFG_HOME
+mkdir -p dmw/styles
+cd dmw/styles
+curl -L https://github.com/psadmin-io/io-styles-fluid/releases/download/1.0.1/IO_STYLES_FLUID.zip -o IO_STYLES_FLUID.zip
+unzip IO_STYLES_FLUID.zip
+exit
+```
+
+Create the DMW File Location.
+
+```bash
+sudo su - oracle2
+. oraenv
+#ORACLE_SID = [] ? CDBFSCM
+#ORACLE_HOME = [] ? /u01/app/oracle/product/db/oracle-server/12.1.0.2
+sqlplus / as sysdba
+SQL> alter session set container=EPPUM;
+
+```
