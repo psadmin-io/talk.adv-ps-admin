@@ -144,11 +144,29 @@ exit
 Create the DMW File Location.
 
 ```bash
+echo 'CDBFSCM:/u01/app/oracle/product/db/oracle-server/12.1.0.2:Y' | sudo tee /etc/oratab
 sudo su - oracle2
+ORACLE_SID=CDBFSCM
+ORACLE_HOME="/u01/app/oracle/product/db/oracle-server/12.1.0.2"
+ORAENV_ASK=NO
 . oraenv
 #ORACLE_SID = [] ? CDBFSCM
 #ORACLE_HOME = [] ? /u01/app/oracle/product/db/oracle-server/12.1.0.2
 sqlplus / as sysdba
 SQL> alter session set container=EPPUM;
-
+SQL> Insert into sysadm.PSPRJREPOSITORY (PTREPNAME,DESCR,PTREPPATH,PT_PROCESS_TYPE,PT_ALLOW_LOCAL_FLG,PT_CLEANUP_FLG,CREATEDTTM,CREATEOPRID,LASTUPDDTTM,LASTUPDOPRID) values ('DMW2',' ','/u01/app/oracle/product/pt/ps_cfg_home/dmw','DMW','N','N',sysdate,'PS',sysdate,'PS');
+SQL> commit;
 ```
+
+Log into the PIA and import the IO_STYLES_FLUID project.
+
+1. Navigate to PeopleTools > Lifecycle Tools > Data Migration > Data Migration Workbench
+1. Click "Load Project from File"
+1. Select the DMW location, and the IO_STYLES_FLUID project.
+1. Click "Schedule Copy from File"
+1. (HR - needed to approve the copy first)
+
+Activate the Stylesheet
+
+1. Navigate to PeopleTools > Portal > Branding > Branding System Options
+1. Set the default stylesheet to `IO_FLUID_BLUE`
